@@ -26,16 +26,56 @@ export const statusLabels: Record<ProjectStatus, string> = {
 };
 
 export const projects: Project[] = [
-  // Livres
+  // Livres publiés
   {
-    id: "neverland-ltd",
-    title: "Neverland Ltd",
+    id: "terra",
+    title: "TERRA",
     category: "books",
     status: "available",
     description:
-      "Une fable romanesque autour de l'enfance, du commerce des rêves et des adultes qui ont mal lu le mode d'emploi. Déjà publié en autoédition.",
+      "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
     url: "#contact",
-    emoji: "📕",
+    emoji: "🌍",
+  },
+  {
+    id: "gerard-et-gerard",
+    title: "Gérard et Gérard",
+    category: "books",
+    status: "available",
+    description:
+      "Quelques centaines de millions de cycles après avoir oublié une vieille simulation scientifique, deux vieux amis découvrent l'humanité. Entre deux verres de Frunch, ils tentent de comprendre ces créatures étranges qui continuent obstinément à espérer.",
+    url: "#contact",
+    emoji: "🥃",
+  },
+  {
+    id: "crotte-man",
+    title: "La crotte de nez magique",
+    category: "books",
+    status: "available",
+    description:
+      "Une aventure jeunesse absurde autour d'un pouvoir inattendu, pour les petits héros et les grandes catastrophes nasales.",
+    url: "#contact",
+    emoji: "🦸",
+  },
+  {
+    id: "neverland-ltd-1",
+    title: "Neverland Ltd — Volume 1",
+    category: "books",
+    status: "available",
+    description:
+      "Dans un Londres en mutation, Peter et Wendy affrontent un système qui ne se combat pas de front. Un thriller contemporain inspiré de Peter Pan, où le véritable champ de bataille est psychologique.",
+    url: "#contact",
+    emoji: "🏙️",
+  },
+  {
+    id: "neverland-ltd-2",
+    title: "Neverland Ltd — Volume 2",
+    category: "books",
+    status: "available",
+    description:
+      "Après l'incendie de Londres, Peter, Wendy et Darya poursuivent leur combat entre Lyon et Londres. Enquêtes, écologie, intelligence artificielle sarcastique et satire sociale plongent les enfants perdus dans des eaux plus profondes.",
+    url: "#contact",
+    emoji: "🌊",
   },
   {
     id: "feulette-tachetee",
@@ -43,29 +83,9 @@ export const projects: Project[] = [
     category: "books",
     status: "available",
     description:
-      "Fable satirique sur l'influence, les foules, les récits contaminés et les petites feuilles qui refusent de rester sages dans l'herbier.",
+      "Une créature magique capable d'apaiser les émotions tente de sauver une propriétaire endettée et un influenceur en quête de contenu viral. Une satire douce de l'économie de l'attention et des créatures qui en ont assez de sauver les humains d'eux-mêmes.",
     url: "#contact",
-    emoji: "🌿",
-  },
-  {
-    id: "kif-et-molla",
-    title: "Kif et Molla",
-    category: "books",
-    status: "development",
-    description:
-      "Série jeunesse absurde et tendre, avec planètes bizarres, grandes personnes inquiétantes et logique d'enfant qui mord gentiment les mollets.",
-    url: "#contact",
-    emoji: "🪐",
-  },
-  {
-    id: "gerard-et-gerard",
-    title: "Gérard et Gérard",
-    category: "books",
-    status: "development",
-    description:
-      "Une aventure loufoque avec facteur, guilde, café du Transit et tentacule de hamster à peine assumé. En préparation pour publication.",
-    url: "#contact",
-    emoji: "📮",
+    emoji: "🍂",
   },
 
   // Applications
