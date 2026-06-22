@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
+import { SupportSection } from "@/components/SupportSection";
 import { ContactSection } from "@/components/ContactSection";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -20,6 +21,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <SupportSection />
         <ProjectsSection />
         <ContactSection />
       </main>
