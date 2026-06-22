@@ -9,6 +9,8 @@ export interface Project {
   description: string;
   url: string;
   emoji: string;
+  image?: string;
+  actionLabel?: string;
 }
 
 export const categoryLabels: Record<ProjectCategory, string> = {
@@ -25,6 +27,8 @@ export const statusLabels: Record<ProjectStatus, string> = {
   support: "À soutenir",
 };
 
+const amazonSearch = "https://www.amazon.es/s?k=benoit+lubert";
+
 export const projects: Project[] = [
   // Livres publiés
   {
@@ -34,8 +38,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
-    url: "#contact",
+    url: "https://www.amazon.es/TERRA-fable-cosmique-lobservation-transmission/dp/B0H4CN5MSH/",
     emoji: "🌍",
+    actionLabel: "Lire sur Amazon",
   },
   {
     id: "gerard-et-gerard",
@@ -44,8 +49,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Quelques centaines de millions de cycles après avoir oublié une vieille simulation scientifique, deux vieux amis découvrent l'humanité. Entre deux verres de Frunch, ils tentent de comprendre ces créatures étranges qui continuent obstinément à espérer.",
-    url: "#contact",
+    url: amazonSearch,
     emoji: "🥃",
+    actionLabel: "Lire sur Amazon",
   },
   {
     id: "crotte-man",
@@ -54,8 +60,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Une aventure jeunesse absurde autour d'un pouvoir inattendu, pour les petits héros et les grandes catastrophes nasales.",
-    url: "#contact",
+    url: amazonSearch,
     emoji: "🦸",
+    actionLabel: "Lire sur Amazon",
   },
   {
     id: "neverland-ltd-1",
@@ -64,8 +71,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Dans un Londres en mutation, Peter et Wendy affrontent un système qui ne se combat pas de front. Un thriller contemporain inspiré de Peter Pan, où le véritable champ de bataille est psychologique.",
-    url: "#contact",
+    url: amazonSearch,
     emoji: "🏙️",
+    actionLabel: "Lire sur Amazon",
   },
   {
     id: "neverland-ltd-2",
@@ -74,8 +82,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Après l'incendie de Londres, Peter, Wendy et Darya poursuivent leur combat entre Lyon et Londres. Enquêtes, écologie, intelligence artificielle sarcastique et satire sociale plongent les enfants perdus dans des eaux plus profondes.",
-    url: "#contact",
+    url: amazonSearch,
     emoji: "🌊",
+    actionLabel: "Lire sur Amazon",
   },
   {
     id: "feulette-tachetee",
@@ -84,8 +93,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Une créature magique capable d'apaiser les émotions tente de sauver une propriétaire endettée et un influenceur en quête de contenu viral. Une satire douce de l'économie de l'attention et des créatures qui en ont assez de sauver les humains d'eux-mêmes.",
-    url: "#contact",
+    url: "https://www.amazon.es/dp/B0H68811RL/",
     emoji: "🍂",
+    actionLabel: "Lire sur Amazon",
   },
 
   // Applications
@@ -98,6 +108,7 @@ export const projects: Project[] = [
       "Prototype de traduction humoristique du vivant : écoute, détecte les sons d'animaux et transforme les chants d'oiseaux en petites révélations sarcastiques.",
     url: "https://benoitlub.github.io/Creature-sync/",
     emoji: "🐦",
+    actionLabel: "Tester l'application",
   },
   {
     id: "clochette-lite",
@@ -106,8 +117,9 @@ export const projects: Project[] = [
     status: "development",
     description:
       "Compagnon Android miniature : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
-    url: "#contact",
+    url: "https://github.com/benoitlub/clochette-lite",
     emoji: "🧚",
+    actionLabel: "Suivre sur GitHub",
   },
   {
     id: "spectrl",
@@ -116,8 +128,9 @@ export const projects: Project[] = [
     status: "experimental",
     description:
       "Expérience audio-visuelle façon radar paranormal : sons, journal d'observation, interface SLS et ambiance de labo qui grésille dans les coins.",
-    url: "#contact",
+    url: "https://benoitlub.github.io/SpecTRL/",
     emoji: "📡",
+    actionLabel: "Tester l'application",
   },
 
   // Jeux et expériences interactives
@@ -128,8 +141,9 @@ export const projects: Project[] = [
     status: "development",
     description:
       "Adaptation web du jeu de cartes Pro.Hibited : tables, pioche, adversaires IA en préparation et multijoueur prévu quand les boulons cesseront de fumer.",
-    url: "#contact",
+    url: "https://benoitlub.github.io/prohibited-online/",
     emoji: "🃏",
+    actionLabel: "Tester le prototype",
   },
   {
     id: "blacklace-dice",
@@ -140,6 +154,7 @@ export const projects: Project[] = [
       "Dé anti-procrastination absurde : un petit outil pour trancher, relancer, hésiter avec méthode et accuser le destin quand il se trompe.",
     url: "https://benoitlub.github.io/blacklace-dice/",
     emoji: "🎲",
+    actionLabel: "Lancer le dé",
   },
   {
     id: "blacklace-echo",
@@ -148,8 +163,9 @@ export const projects: Project[] = [
     status: "development",
     description:
       "Carte vivante et narrative de Blacklace Island : Rotas, personnages, lieux, effets, transitions et promenade encore en construction.",
-    url: "#contact",
+    url: "https://benoitlub.github.io/blacklace-echo/",
     emoji: "🖤",
+    actionLabel: "Explorer",
   },
 
   // Univers Blacklace
@@ -160,8 +176,9 @@ export const projects: Project[] = [
     status: "support",
     description:
       "Univers narratif transversal : Port Porsa Rotas, Feuch Institute, BNN24, Natasha, Fée Belette, SATOR et autres anomalies administratives.",
-    url: "#contact",
+    url: "https://benoitlub.github.io/blacklace-echo/",
     emoji: "🏝️",
+    actionLabel: "Explorer l'univers",
   },
   {
     id: "feuch-institute",
@@ -172,5 +189,6 @@ export const projects: Project[] = [
       "Laboratoire fictif très sérieux, spécialisé dans les oiseaux, les signaux, les erreurs de protocole et les explications scientifiques qui sentent le café froid.",
     url: "#contact",
     emoji: "⚗️",
+    actionLabel: "Écrire au laboratoire",
   },
 ];
