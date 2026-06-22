@@ -30,9 +30,9 @@ export const statusLabels: Record<ProjectStatus, string> = {
 };
 
 const amazonSearch = "https://www.amazon.fr/s?k=benoit+lubert";
+const kofiUrl = "https://ko-fi.com/feuchinstitut";
 
 export const projects: Project[] = [
-  // Livres publiés
   {
     id: "terra",
     title: "TERRA",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
     url: "https://www.amazon.fr/TERRA-fable-cosmique-lobservation-transmission-ebook/dp/B0H49Z1K3H/",
     emoji: "🌍",
-    image: projectImages.terra,
+    image: projectImages.clochette,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -116,7 +116,6 @@ export const projects: Project[] = [
     actionLabel: "Lire sur Amazon",
   },
 
-  // Applications
   {
     id: "creature-sync",
     title: "Creature-Sync",
@@ -134,11 +133,11 @@ export const projects: Project[] = [
     category: "apps",
     status: "development",
     description:
-      "Compagnon Android miniature : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
-    url: "https://github.com/benoitlub/clochette-lite",
+      "Compagnon Android miniature en préparation : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
+    url: "#soutenir",
     emoji: "🧚",
-    image: projectImages.clochette,
-    actionLabel: "Suivre sur GitHub",
+    image: projectImages.terra,
+    actionLabel: "Version Android en préparation",
   },
   {
     id: "spectrl",
@@ -152,7 +151,6 @@ export const projects: Project[] = [
     actionLabel: "Tester l'application",
   },
 
-  // Jeux et expériences interactives
   {
     id: "prohibited-online",
     title: "Pro.Hibited Online",
@@ -187,7 +185,17 @@ export const projects: Project[] = [
     actionLabel: "Explorer",
   },
 
-  // Univers Blacklace
+  {
+    id: "support-feuch-institute",
+    title: "Soutenir le Feuch Institute",
+    category: "blacklace",
+    status: "support",
+    description:
+      "Les contributions aident à financer les hébergements, les outils d'IA, les prototypes, les prochaines publications et les graines de survie du laboratoire.",
+    url: kofiUrl,
+    emoji: "☕",
+    actionLabel: "Offrir un café",
+  },
   {
     id: "blacklace-universe",
     title: "Blacklace Island",
