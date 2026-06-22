@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import type { Project } from "@/data/projects";
 import { StatusBadge } from "./StatusBadge";
 
-const actionLabel: Record<Project["status"], string> = {
-  available: "Voir / demander le lien",
+const fallbackActionLabel: Record<Project["status"], string> = {
+  available: "Ouvrir le lien",
   development: "Suivre le chantier",
   experimental: "Tester le prototype",
   support: "Soutenir l'univers",
@@ -22,10 +22,19 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               "radial-gradient(circle at 30% 30%, hsl(var(--primary-glow) / 0.25), transparent 60%), radial-gradient(circle at 70% 70%, hsl(var(--accent) / 0.25), transparent 60%)",
           }}
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="animate-float text-6xl drop-shadow-md" aria-hidden>
-            {project.emoji}
-          </span>
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`Couverture ou capture de ${project.title}`}
+              className="h-full max-h-36 w-auto rounded-md object-contain shadow-lg"
+              loading="lazy"
+            />
+          ) : (
+            <span className="animate-float text-6xl drop-shadow-md" aria-hidden>
+              {project.emoji}
+            </span>
+          )}
         </div>
         <div className="absolute left-3 top-3">
           <StatusBadge status={project.status} />
@@ -42,17 +51,13 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           </p>
         </header>
 
-        <div className="mt-auto rounded-xl border border-border/70 bg-parchment/60 p-3 text-sm leading-relaxed text-muted-foreground">
-          Pas de faux compteur, pas de thermomètre magique : chaque projet indique simplement son état réel.
-        </div>
-
-        <Button asChild variant="apothecary" className="w-full">
+        <Button asChild variant="apothecary" className="mt-auto w-full">
           <a
             href={project.url}
             target={isAnchor ? undefined : "_blank"}
             rel={isAnchor ? undefined : "noreferrer noopener"}
           >
-            {actionLabel[project.status]}
+            {project.actionLabel ?? fallbackActionLabel[project.status]}
           </a>
         </Button>
       </div>
