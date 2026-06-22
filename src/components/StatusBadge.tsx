@@ -2,15 +2,17 @@ import { statusLabels, type ProjectStatus } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
 const styles: Record<ProjectStatus, string> = {
-  crowdfunding: "bg-primary text-primary-foreground",
-  wishlist: "bg-accent text-accent-foreground",
-  tipjar: "bg-gold text-gold-foreground",
+  available: "bg-primary text-primary-foreground",
+  development: "bg-accent text-accent-foreground",
+  experimental: "bg-gold text-gold-foreground",
+  support: "bg-ink text-parchment",
 };
 
 const icons: Record<ProjectStatus, string> = {
-  crowdfunding: "⚗️",
-  wishlist: "✨",
-  tipjar: "🫙",
+  available: "📚",
+  development: "🔧",
+  experimental: "🧪",
+  support: "🌱",
 };
 
 export const StatusBadge = ({ status }: { status: ProjectStatus }) => (
