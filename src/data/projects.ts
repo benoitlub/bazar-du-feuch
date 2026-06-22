@@ -29,7 +29,6 @@ export const statusLabels: Record<ProjectStatus, string> = {
   support: "À soutenir",
 };
 
-const amazonSearch = "https://www.amazon.fr/s?k=benoit+lubert";
 const kofiUrl = "https://ko-fi.com/feuchinstitut";
 
 export const projects: Project[] = [
@@ -40,7 +39,7 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
-    url: "https://www.amazon.fr/TERRA-fable-cosmique-lobservation-transmission-ebook/dp/B0H49Z1K3H/",
+    url: "https://www.amazon.fr/dp/B0H4CN5MSH/",
     emoji: "🌍",
     image: projectImages.clochette,
     actionLabel: "Lire sur Amazon",
@@ -52,7 +51,7 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Quelques centaines de millions de cycles après avoir oublié une vieille simulation scientifique, deux vieux amis découvrent l'humanité. Entre deux verres de Frunch, ils tentent de comprendre ces créatures étranges qui continuent obstinément à espérer.",
-    url: amazonSearch,
+    url: "https://www.amazon.fr/dp/B0H68811RL/",
     emoji: "🥃",
     image: projectImages.gerard,
     actionLabel: "Lire sur Amazon",
@@ -64,8 +63,9 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Dans un Londres en mutation, Peter et Wendy affrontent un système qui ne se combat pas de front. Un thriller contemporain inspiré de Peter Pan, où le véritable champ de bataille est psychologique.",
-    url: amazonSearch,
+    url: "https://www.amazon.fr/dp/B0GWHDTG6N/",
     emoji: "🏙️",
+    image: projectImages.neverland2,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -75,19 +75,19 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Après l'incendie de Londres, Peter, Wendy et Darya poursuivent leur combat entre Lyon et Londres. Enquêtes, écologie, intelligence artificielle sarcastique et satire sociale plongent les enfants perdus dans des eaux plus profondes.",
-    url: amazonSearch,
+    url: "https://www.amazon.fr/dp/B0H4RP6T4V/",
     emoji: "🌊",
     image: projectImages.neverland2,
     actionLabel: "Lire sur Amazon",
   },
   {
     id: "feulette-tachetee",
-    title: "La Feulette Tachetée",
+    title: "La Feulette tachetée",
     category: "books",
     status: "available",
     description:
       "Une créature magique capable d'apaiser les émotions tente de sauver une propriétaire endettée et un influenceur en quête de contenu viral. Une satire douce de l'économie de l'attention et des créatures qui en ont assez de sauver les humains d'eux-mêmes.",
-    url: "https://www.amazon.es/dp/B0H68811RL/",
+    url: "https://www.amazon.fr/dp/B0GYSSLZX4/",
     emoji: "🍂",
     image: projectImages.feulette,
     actionLabel: "Lire sur Amazon",
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Une aventure jeunesse absurde autour d'un pouvoir inattendu, pour les petits héros et les grandes catastrophes nasales.",
-    url: amazonSearch,
+    url: "https://www.amazon.fr/dp/B0G4F4639R/",
     emoji: "🦸",
     actionLabel: "Lire sur Amazon",
   },
@@ -136,7 +136,6 @@ export const projects: Project[] = [
       "Compagnon Android miniature en préparation : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
     url: "#soutenir",
     emoji: "🧚",
-    image: projectImages.terra,
     actionLabel: "Version Android en préparation",
   },
   {
@@ -147,7 +146,7 @@ export const projects: Project[] = [
     description:
       "Expérience audio-visuelle façon radar paranormal : sons, journal d'observation, interface SLS et ambiance de labo qui grésille dans les coins.",
     url: "https://benoitlub.github.io/SpecTRL/",
-    emoji: "📡",
+    emoji: "👁️",
     actionLabel: "Tester l'application",
   },
 
@@ -187,7 +186,7 @@ export const projects: Project[] = [
 
   {
     id: "support-feuch-institute",
-    title: "Soutenir le Feuch Institute",
+    title: "Soutenir le Feuch Institut",
     category: "blacklace",
     status: "support",
     description:
@@ -202,14 +201,14 @@ export const projects: Project[] = [
     category: "blacklace",
     status: "support",
     description:
-      "Univers narratif transversal : Port Porsa Rotas, Feuch Institute, BNN24, Natasha, Fée Belette, SATOR et autres anomalies administratives.",
+      "Univers narratif transversal : Port Porsa Rotas, Feuch Institut, BNN24, Natasha, Fée Belette, SATOR et autres anomalies administratives.",
     url: "https://benoitlub.github.io/blacklace-echo/",
     emoji: "🏝️",
     actionLabel: "Explorer l'univers",
   },
   {
     id: "feuch-institute",
-    title: "Feuch Institute",
+    title: "Feuch Institut",
     category: "blacklace",
     status: "experimental",
     description:
