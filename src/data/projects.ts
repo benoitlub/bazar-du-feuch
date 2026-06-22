@@ -1,4 +1,4 @@
-export type ProjectStatus = "crowdfunding" | "wishlist" | "tipjar";
+export type ProjectStatus = "available" | "development" | "experimental" | "support";
 export type ProjectCategory = "books" | "apps" | "games" | "blacklace";
 
 export interface Project {
@@ -7,8 +7,6 @@ export interface Project {
   category: ProjectCategory;
   status: ProjectStatus;
   description: string;
-  target: number;
-  collected: number;
   url: string;
   emoji: string;
 }
@@ -16,14 +14,15 @@ export interface Project {
 export const categoryLabels: Record<ProjectCategory, string> = {
   books: "Livres",
   apps: "Applications",
-  games: "Jeux",
+  games: "Jeux & expériences",
   blacklace: "Univers Blacklace",
 };
 
 export const statusLabels: Record<ProjectStatus, string> = {
-  crowdfunding: "Financement",
-  wishlist: "Liste de souhaits",
-  tipjar: "Pot à pourboire",
+  available: "Disponible",
+  development: "En développement",
+  experimental: "Expérimental",
+  support: "À soutenir",
 };
 
 export const projects: Project[] = [
@@ -32,123 +31,126 @@ export const projects: Project[] = [
     id: "neverland-ltd",
     title: "Neverland Ltd",
     category: "books",
-    status: "crowdfunding",
+    status: "available",
     description:
-      "Roman fantastique où Peter Pan dirige une multinationale de l'enfance perdue. Conte cynique et tendre.",
-    target: 4500,
-    collected: 2870,
-    url: "https://example.com/neverland",
+      "Une fable romanesque autour de l'enfance, du commerce des rêves et des adultes qui ont mal lu le mode d'emploi. Déjà publié en autoédition.",
+    url: "#contact",
     emoji: "📕",
   },
   {
     id: "feulette-tachetee",
     title: "La Feulette Tachetée",
     category: "books",
-    status: "wishlist",
+    status: "available",
     description:
-      "Recueil de nouvelles botaniques et inquiétantes, illustré à la plume. Pour les amateurs d'herbiers étranges.",
-    target: 3200,
-    collected: 410,
-    url: "https://example.com/feulette",
+      "Fable satirique sur l'influence, les foules, les récits contaminés et les petites feuilles qui refusent de rester sages dans l'herbier.",
+    url: "#contact",
     emoji: "🌿",
   },
   {
     id: "kif-et-molla",
     title: "Kif et Molla",
     category: "books",
-    status: "tipjar",
+    status: "development",
     description:
-      "Carnet de voyage imaginaire de deux explorateurs maladroits. Auto-édité, en vente libre, soutien bienvenu.",
-    target: 800,
-    collected: 530,
-    url: "https://example.com/kif",
-    emoji: "🗺️",
+      "Série jeunesse absurde et tendre, avec planètes bizarres, grandes personnes inquiétantes et logique d'enfant qui mord gentiment les mollets.",
+    url: "#contact",
+    emoji: "🪐",
   },
+  {
+    id: "gerard-et-gerard",
+    title: "Gérard et Gérard",
+    category: "books",
+    status: "development",
+    description:
+      "Une aventure loufoque avec facteur, guilde, café du Transit et tentacule de hamster à peine assumé. En préparation pour publication.",
+    url: "#contact",
+    emoji: "📮",
+  },
+
   // Applications
   {
     id: "creature-sync",
     title: "Creature-Sync",
     category: "apps",
-    status: "crowdfunding",
+    status: "experimental",
     description:
-      "Application de synchronisation pour maîtres du jeu : gérez vos bestiaires entre tablette, papier et grimoire.",
-    target: 6000,
-    collected: 4150,
-    url: "https://example.com/creature-sync",
-    emoji: "🦎",
+      "Prototype de traduction humoristique du vivant : écoute, détecte les sons d'animaux et transforme les chants d'oiseaux en petites révélations sarcastiques.",
+    url: "https://benoitlub.github.io/Creature-sync/",
+    emoji: "🐦",
   },
   {
     id: "clochette-lite",
     title: "Clochette Lite",
     category: "apps",
-    status: "tipjar",
+    status: "development",
     description:
-      "Minuteur poétique aux sonneries de carillons. Gratuit, sans publicité. Glissez une pièce dans le pot.",
-    target: 500,
-    collected: 312,
-    url: "https://example.com/clochette",
-    emoji: "🔔",
+      "Compagnon Android miniature : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
+    url: "#contact",
+    emoji: "🧚",
   },
   {
     id: "spectrl",
     title: "SpecTRL",
     category: "apps",
-    status: "wishlist",
+    status: "experimental",
     description:
-      "Spectromètre ludique pour identifier les couleurs et matières. En cours de prototypage.",
-    target: 7800,
-    collected: 1240,
-    url: "https://example.com/spectrl",
-    emoji: "🔬",
+      "Expérience audio-visuelle façon radar paranormal : sons, journal d'observation, interface SLS et ambiance de labo qui grésille dans les coins.",
+    url: "#contact",
+    emoji: "📡",
   },
-  // Jeux
+
+  // Jeux et expériences interactives
   {
     id: "prohibited-online",
     title: "Pro.Hibited Online",
     category: "games",
-    status: "crowdfunding",
+    status: "development",
     description:
-      "Jeu multijoueur d'enquête dans une Amérique alternative des années 1920. Contrebandiers, journalistes, juges corrompus.",
-    target: 12000,
-    collected: 7830,
-    url: "https://example.com/prohibited",
-    emoji: "🥃",
+      "Adaptation web du jeu de cartes Pro.Hibited : tables, pioche, adversaires IA en préparation et multijoueur prévu quand les boulons cesseront de fumer.",
+    url: "#contact",
+    emoji: "🃏",
   },
   {
     id: "blacklace-dice",
     title: "Blacklace Dice",
     category: "games",
-    status: "wishlist",
+    status: "experimental",
     description:
-      "Jeu de dés narratif dans l'univers Blacklace. Rituels, dentelles et secrets de famille.",
-    target: 3500,
-    collected: 980,
-    url: "https://example.com/blacklace-dice",
+      "Dé anti-procrastination absurde : un petit outil pour trancher, relancer, hésiter avec méthode et accuser le destin quand il se trompe.",
+    url: "https://benoitlub.github.io/blacklace-dice/",
     emoji: "🎲",
   },
   {
     id: "blacklace-echo",
     title: "Blacklace Echo",
     category: "games",
-    status: "crowdfunding",
+    status: "development",
     description:
-      "Aventure textuelle immersive. Explorez le manoir Blacklace, ses échos et ses fantômes obstinés.",
-    target: 5400,
-    collected: 3120,
-    url: "https://example.com/blacklace-echo",
-    emoji: "🕯️",
+      "Carte vivante et narrative de Blacklace Island : Rotas, personnages, lieux, effets, transitions et promenade encore en construction.",
+    url: "#contact",
+    emoji: "🖤",
   },
+
   // Univers Blacklace
   {
     id: "blacklace-universe",
-    title: "L'Univers Blacklace",
+    title: "Blacklace Island",
     category: "blacklace",
-    status: "tipjar",
+    status: "support",
     description:
-      "Le worldbuilding, la bible, les cartes et les fragments d'histoire. Un projet vivant à soutenir librement.",
-    target: 2000,
-    collected: 1280,
-    url: "https://example.com/blacklace",
-    emoji: "🖤",
+      "Univers narratif transversal : Port Porsa Rotas, Feuch Institute, BNN24, Natasha, Fée Belette, SATOR et autres anomalies administratives.",
+    url: "#contact",
+    emoji: "🏝️",
+  },
+  {
+    id: "feuch-institute",
+    title: "Feuch Institute",
+    category: "blacklace",
+    status: "experimental",
+    description:
+      "Laboratoire fictif très sérieux, spécialisé dans les oiseaux, les signaux, les erreurs de protocole et les explications scientifiques qui sentent le café froid.",
+    url: "#contact",
+    emoji: "⚗️",
   },
 ];
