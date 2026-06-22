@@ -9,7 +9,7 @@ export const SupportSection = () => (
       <div>
         <span className="label-stamp text-[0.7rem] text-primary">Soutenir les expériences</span>
         <h2 className="mt-2 font-serif-display text-4xl text-ink md:text-5xl">
-          Nourrir le Feuch Institute
+          Nourrir le Feuch Institut
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
           Le laboratoire observe les oiseaux, écrit des livres étranges et construit des expériences improbables.
