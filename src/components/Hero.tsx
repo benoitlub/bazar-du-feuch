@@ -6,7 +6,7 @@ export const Hero = () => (
     <div className="container relative mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
       <div className="relative z-10">
         <span className="label-stamp inline-block rounded-full border border-primary/30 px-3 py-1 text-[0.65rem] text-primary">
-          Feuch Institute · Cabinet de curiosités numériques
+          Feuch Institut · Cabinet de curiosités numériques
         </span>
         <h1 className="mt-5 font-serif-display text-5xl leading-[0.95] text-ink md:text-7xl">
           Le Bazar
@@ -23,7 +23,7 @@ export const Hero = () => (
             <a href="#projets">Explorer le bazar</a>
           </Button>
           <Button asChild variant="parchment" size="lg">
-            <a href="#contact">Soutenir ou demander un lien</a>
+            <a href="#soutenir">Soutenir le laboratoire</a>
           </Button>
         </div>
       </div>
@@ -34,7 +34,7 @@ export const Hero = () => (
         <div className="paper-card relative overflow-hidden">
           <img
             src={heroImg}
-            alt="Atelier du Feuch Institute — fioles, livres et instruments de cuivre"
+            alt="Atelier du Feuch Institut — fioles, livres et instruments de cuivre"
             width={1600}
             height={1024}
             className="aspect-[16/10] w-full object-cover"
