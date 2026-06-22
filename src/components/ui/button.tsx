@@ -15,6 +15,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        apothecary:
+          "relative bg-[image:var(--gradient-flask)] text-primary-foreground shadow-[0_3px_0_hsl(350_55%_22%),0_8px_18px_-6px_hsl(350_55%_22%/0.55)] hover:translate-y-[1px] hover:shadow-[0_2px_0_hsl(350_55%_22%),0_5px_12px_-4px_hsl(350_55%_22%/0.55)] active:translate-y-[2px]",
+        copper:
+          "bg-[image:var(--gradient-copper)] text-secondary-foreground shadow-[0_3px_0_hsl(25_60%_32%),0_8px_18px_-6px_hsl(25_60%_32%/0.55)] hover:translate-y-[1px]",
+        parchment:
+          "border border-border bg-card text-ink hover:bg-parchment-deep",
       },
       size: {
         default: "h-10 px-4 py-2",
