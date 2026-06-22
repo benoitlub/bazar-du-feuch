@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Send, Sparkles } from "lucide-react";
+import { Coffee, Mail, Send, Sparkles } from "lucide-react";
+
+const kofiUrl = "https://ko-fi.com/feuchinstitut";
 
 export const ContactSection = () => (
   <section id="contact" className="container mx-auto px-4 py-16 md:py-24">
@@ -16,8 +18,14 @@ export const ContactSection = () => (
         <ul className="mt-6 space-y-3 text-sm">
           <li className="flex items-center gap-3">
             <Mail size={18} className="text-primary" />
-            <a className="hover:text-primary" href="mailto:professeur@feuch.fr">
-              professeur@feuch.fr
+            <a className="hover:text-primary" href="mailto:lubertvlc@gmail.com">
+              lubertvlc@gmail.com
+            </a>
+          </li>
+          <li className="flex items-center gap-3">
+            <Coffee size={18} className="text-primary" />
+            <a className="hover:text-primary" href={kofiUrl} target="_blank" rel="noreferrer noopener">
+              ko-fi.com/feuchinstitut
             </a>
           </li>
           <li className="flex items-center gap-3">
@@ -25,6 +33,12 @@ export const ContactSection = () => (
             <span>Réponse sous 3 à 7 jours ouvrables (vapeurs permettant)</span>
           </li>
         </ul>
+
+        <Button asChild variant="parchment" className="mt-6">
+          <a href={kofiUrl} target="_blank" rel="noreferrer noopener">
+            <Coffee /> Offrir un café au laboratoire
+          </a>
+        </Button>
       </div>
 
       <form
@@ -32,11 +46,11 @@ export const ContactSection = () => (
         onSubmit={(e) => {
           e.preventDefault();
           const data = new FormData(e.currentTarget);
-          const subject = encodeURIComponent("Bazar du Professeur Feuch — message");
+          const subject = encodeURIComponent("Bazar du Feuch — message");
           const body = encodeURIComponent(
             `${data.get("message")}\n\n— ${data.get("name")}`,
           );
-          window.location.href = `mailto:professeur@feuch.fr?subject=${subject}&body=${body}`;
+          window.location.href = `mailto:lubertvlc@gmail.com?subject=${subject}&body=${body}`;
         }}
       >
         <input
