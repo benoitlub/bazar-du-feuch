@@ -14,7 +14,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
   return (
     <article className="paper-card group flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_hsl(25_40%_20%_/_0.45)]">
-      <div className="relative h-44 overflow-hidden border-b border-border bg-parchment-deep">
+      <div className="relative h-36 overflow-hidden border-b border-border bg-parchment-deep sm:h-40">
         <div
           className="absolute inset-0 opacity-70"
           style={{
@@ -22,16 +22,16 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               "radial-gradient(circle at 30% 30%, hsl(var(--primary-glow) / 0.25), transparent 60%), radial-gradient(circle at 70% 70%, hsl(var(--accent) / 0.25), transparent 60%)",
           }}
         />
-        <div className="absolute inset-0 flex items-center justify-center p-4">
+        <div className="absolute inset-0 flex items-center justify-center p-3">
           {project.image ? (
             <img
               src={project.image}
               alt={`Couverture ou capture de ${project.title}`}
-              className="h-full max-h-36 w-auto rounded-md object-contain shadow-lg"
+              className="h-full max-h-32 w-auto rounded-md object-contain shadow-lg sm:max-h-36"
               loading="lazy"
             />
           ) : (
-            <span className="animate-float text-6xl drop-shadow-md" aria-hidden>
+            <span className="animate-float text-5xl drop-shadow-md" aria-hidden>
               {project.emoji}
             </span>
           )}
