@@ -1,3 +1,5 @@
+import { projectImages } from "./projectImages";
+
 export type ProjectStatus = "available" | "development" | "experimental" | "support";
 export type ProjectCategory = "books" | "apps" | "games" | "blacklace";
 
@@ -40,6 +42,7 @@ export const projects: Project[] = [
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
     url: "https://www.amazon.fr/TERRA-fable-cosmique-lobservation-transmission-ebook/dp/B0H49Z1K3H/",
     emoji: "🌍",
+    image: projectImages.terra,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -51,17 +54,7 @@ export const projects: Project[] = [
       "Quelques centaines de millions de cycles après avoir oublié une vieille simulation scientifique, deux vieux amis découvrent l'humanité. Entre deux verres de Frunch, ils tentent de comprendre ces créatures étranges qui continuent obstinément à espérer.",
     url: amazonSearch,
     emoji: "🥃",
-    actionLabel: "Lire sur Amazon",
-  },
-  {
-    id: "crotte-man",
-    title: "La crotte de nez magique",
-    category: "books",
-    status: "available",
-    description:
-      "Une aventure jeunesse absurde autour d'un pouvoir inattendu, pour les petits héros et les grandes catastrophes nasales.",
-    url: amazonSearch,
-    emoji: "🦸",
+    image: projectImages.gerard,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -84,6 +77,7 @@ export const projects: Project[] = [
       "Après l'incendie de Londres, Peter, Wendy et Darya poursuivent leur combat entre Lyon et Londres. Enquêtes, écologie, intelligence artificielle sarcastique et satire sociale plongent les enfants perdus dans des eaux plus profondes.",
     url: amazonSearch,
     emoji: "🌊",
+    image: projectImages.neverland2,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -95,6 +89,30 @@ export const projects: Project[] = [
       "Une créature magique capable d'apaiser les émotions tente de sauver une propriétaire endettée et un influenceur en quête de contenu viral. Une satire douce de l'économie de l'attention et des créatures qui en ont assez de sauver les humains d'eux-mêmes.",
     url: "https://www.amazon.es/dp/B0H68811RL/",
     emoji: "🍂",
+    image: projectImages.feulette,
+    actionLabel: "Lire sur Amazon",
+  },
+  {
+    id: "kif-et-molla",
+    title: "Les enquêtes approximatives de Kif & Molla",
+    category: "books",
+    status: "available",
+    description:
+      "Deux détectives interdimensionnels aussi sincères qu'incompétents débarquent sur Terre et transforment les petits tracas du quotidien en affaires d'État. Heureusement pour nous, leurs catastrophes finissent souvent par devenir des miracles.",
+    url: "https://www.amazon.fr/dp/B0H69ZMTK9/",
+    emoji: "🕵️",
+    image: projectImages.kifMolla,
+    actionLabel: "Lire sur Amazon",
+  },
+  {
+    id: "crotte-man",
+    title: "La crotte de nez magique",
+    category: "books",
+    status: "available",
+    description:
+      "Une aventure jeunesse absurde autour d'un pouvoir inattendu, pour les petits héros et les grandes catastrophes nasales.",
+    url: amazonSearch,
+    emoji: "🦸",
     actionLabel: "Lire sur Amazon",
   },
 
@@ -119,6 +137,7 @@ export const projects: Project[] = [
       "Compagnon Android miniature : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
     url: "https://github.com/benoitlub/clochette-lite",
     emoji: "🧚",
+    image: projectImages.clochette,
     actionLabel: "Suivre sur GitHub",
   },
   {
