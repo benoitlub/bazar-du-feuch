@@ -1,4 +1,4 @@
-import { useMemo, useState } from "https://esm.sh/react";
+import { useMemo, useState } from "react";
 import { categoryLabels, projects, type ProjectCategory } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { cn } from "@/lib/utils";
