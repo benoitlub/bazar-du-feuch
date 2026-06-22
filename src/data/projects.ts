@@ -27,7 +27,7 @@ export const statusLabels: Record<ProjectStatus, string> = {
   support: "À soutenir",
 };
 
-const amazonSearch = "https://www.amazon.es/s?k=benoit+lubert";
+const amazonSearch = "https://www.amazon.fr/s?k=benoit+lubert";
 
 export const projects: Project[] = [
   // Livres publiés
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     status: "available",
     description:
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
-    url: "https://www.amazon.es/TERRA-fable-cosmique-lobservation-transmission/dp/B0H4CN5MSH/",
+    url: "https://www.amazon.fr/TERRA-fable-cosmique-lobservation-transmission-ebook/dp/B0H49Z1K3H/",
     emoji: "🌍",
     actionLabel: "Lire sur Amazon",
   },
