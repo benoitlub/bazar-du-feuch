@@ -2,21 +2,18 @@ import { Button } from "@/components/ui/button";
 import type { Project } from "@/data/projects";
 import { StatusBadge } from "./StatusBadge";
 
-const supportLabel: Record<Project["status"], string> = {
-  crowdfunding: "Soutenir le projet",
-  wishlist: "Ajouter à mes souhaits",
-  tipjar: "Laisser une pièce",
+const actionLabel: Record<Project["status"], string> = {
+  available: "Voir / demander le lien",
+  development: "Suivre le chantier",
+  experimental: "Tester le prototype",
+  support: "Soutenir l'univers",
 };
 
-const formatEuro = (n: number) =>
-  new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-
 export const ProjectCard = ({ project }: { project: Project }) => {
-  const pct = Math.min(100, Math.round((project.collected / project.target) * 100));
+  const isAnchor = project.url.startsWith("#");
 
   return (
     <article className="paper-card group flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_hsl(25_40%_20%_/_0.45)]">
-      {/* Image placeholder — vintage label */}
       <div className="relative h-44 overflow-hidden border-b border-border bg-parchment-deep">
         <div
           className="absolute inset-0 opacity-70"
@@ -45,30 +42,19 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           </p>
         </header>
 
-        <div className="mt-auto space-y-3">
-          {/* Progress flask */}
-          <div className="relative h-3 overflow-hidden rounded-full border border-border bg-parchment-deep">
-            <div
-              className="h-full rounded-full transition-all"
-              style={{
-                width: `${pct}%`,
-                backgroundImage: "var(--gradient-flask)",
-              }}
-            />
-          </div>
-          <div className="flex items-baseline justify-between text-sm">
-            <span className="font-semibold text-primary">{formatEuro(project.collected)}</span>
-            <span className="text-muted-foreground">
-              sur {formatEuro(project.target)} · {pct}%
-            </span>
-          </div>
-
-          <Button asChild variant="apothecary" className="w-full">
-            <a href={project.url} target="_blank" rel="noreferrer noopener">
-              {supportLabel[project.status]}
-            </a>
-          </Button>
+        <div className="mt-auto rounded-xl border border-border/70 bg-parchment/60 p-3 text-sm leading-relaxed text-muted-foreground">
+          Pas de faux compteur, pas de thermomètre magique : chaque projet indique simplement son état réel.
         </div>
+
+        <Button asChild variant="apothecary" className="w-full">
+          <a
+            href={project.url}
+            target={isAnchor ? undefined : "_blank"}
+            rel={isAnchor ? undefined : "noreferrer noopener"}
+          >
+            {actionLabel[project.status]}
+          </a>
+        </Button>
       </div>
     </article>
   );
