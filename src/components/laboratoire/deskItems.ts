@@ -19,8 +19,6 @@ import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
 import contactNote from "@/assets/laboratoire/notes/note-manuscrite-05.png";
 import crotteManArchive from "@/assets/laboratoire/notes/note-manuscrite-01.png";
 import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.png";
-import feuchInstituteArchive from "@/assets/laboratoire/papers/dossier-photos-vieilli-01.png";
-import blacklaceEchoArchive from "@/assets/laboratoire/papers/grand-feuillet-01.png";
 import unknownProjectArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
 import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
 import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
@@ -28,6 +26,8 @@ import natashaPolaroid from "@/assets/laboratoire/polaroids/polaroid-natasha-01.
 import rotasMap from "@/assets/laboratoire/rotas/carte-port-porsa-rotas-01.png";
 import satorCard from "@/assets/laboratoire/sator/carre-sator-01.png";
 import bnn24Ticket from "@/assets/laboratoire/tickets/ticket-bnn24-01.png";
+import bazarDuFeuch from "@/assets/laboratoire/universe/bazar-du-feuch.jpg";
+import blacklaceEchoCard from "@/assets/laboratoire/universe/blacklace-echo-card.jpg";
 
 export type ItemKind = "book" | "app" | "game" | "note" | "badge" | "card" | "decor" | "support" | "polaroid" | "map" | "ticket" | "poster" | "folder" | "coaster" | "playingCard";
 
@@ -58,9 +58,9 @@ const projectAssets: Record<string, string> = {
   "clochette-lite": clochetteLiteCard,
   "prohibited-online": prohibitedOnlineCard,
   "blacklace-dice": blacklaceDiceCard,
-  "blacklace-echo": blacklaceEchoArchive,
+  "blacklace-echo": blacklaceEchoCard,
   "support-feuch-institute": badgeFeuchInstitute,
-  "feuch-institute": feuchInstituteArchive,
+  "feuch-institute": bazarDuFeuch,
 };
 
 const projectItem = (
