@@ -13,6 +13,9 @@ import frunchCoaster from "@/assets/laboratoire/frunch/dessous-verre-frunch-01.p
 import blacklaceDiceCard from "@/assets/laboratoire/games/blacklace-dice-card.jpg";
 import prohibitedCard from "@/assets/laboratoire/games/prohibited-card.jpg";
 import prohibitedOnlineCard from "@/assets/laboratoire/games/prohibited-online-card.jpg";
+import blacklaceIslandLogo from "@/assets/laboratoire/logos/blacklace-island-logo.jpg";
+import prohibitedNetworkLogo from "@/assets/laboratoire/logos/prohibited-network-logo.jpg";
+import specimenDomeLogo from "@/assets/laboratoire/logos/specimen-dome-logo.jpg";
 import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
 import neverlandOneArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
 import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
@@ -22,7 +25,7 @@ import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.pn
 import unknownProjectArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
 import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
 import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
-import natashaPolaroid from "@/assets/laboratoire/polaroids/polaroid-natasha-01.png";
+import natashaPortrait from "@/assets/laboratoire/portraits/natasha.jpg";
 import rotasMap from "@/assets/laboratoire/rotas/carte-port-porsa-rotas-01.png";
 import satorCard from "@/assets/laboratoire/sator/carre-sator-01.png";
 import bnn24Ticket from "@/assets/laboratoire/tickets/ticket-bnn24-01.png";
@@ -107,6 +110,49 @@ const projectItem = (
 };
 
 export const deskItems: DeskItem[] = [
+  {
+    id: "prohibited-network-logo",
+    kind: "decor",
+    label: "Pro.Hibited Network",
+    description: "Sceau lumineux du réseau Pro.Hibited, retrouvé dans les archives numériques du laboratoire.",
+    body: "PRO.HIBITED NETWORK\n\nCanal expérimental.\nSignal stable.\nAccès déconseillé aux joueurs raisonnables.",
+    x: 890,
+    y: 64,
+    width: 150,
+    rotation: -3,
+    image: prohibitedNetworkLogo,
+    url: "https://benoitlub.github.io/prohibited-online/",
+    actionLabel: "Ouvrir le réseau",
+    caption: "identité réseau",
+  },
+  {
+    id: "specimen-dome",
+    kind: "decor",
+    label: "Spécimen sous cloche",
+    description: "Culture bioluminescente observée dans une cloche du Feuch Institute. Le protocole recommande de ne pas tapoter le verre.",
+    body: "SPÉCIMEN BIOLUMINESCENT\n\nCroissance : lente.\nSignal : violet et cyan.\nStatut : probablement conscient.",
+    x: 1050,
+    y: 58,
+    width: 142,
+    rotation: 2,
+    image: specimenDomeLogo,
+    caption: "spécimen expérimental",
+  },
+  {
+    id: "blacklace-island-logo",
+    kind: "decor",
+    label: "Blacklace Island",
+    description: "Insigne lumineux de Blacklace Island, territoire d'histoires, de signaux et de phénomènes administrativement douteux.",
+    body: "BLACKLACE ISLAND\n\nDeux spirales.\nUne île.\nPlusieurs réalités incompatibles.",
+    x: 1200,
+    y: 82,
+    width: 150,
+    rotation: 4,
+    image: blacklaceIslandLogo,
+    url: "https://benoitlub.github.io/blacklace-echo/",
+    actionLabel: "Explorer Blacklace",
+    caption: "insigne Blacklace",
+  },
   {
     id: "note-intro",
     kind: "note",
@@ -201,7 +247,7 @@ export const deskItems: DeskItem[] = [
     y: 820,
     width: 150,
     rotation: 3,
-    image: natashaPolaroid,
+    image: natashaPortrait,
     emoji: "🎙️",
     caption: "photo presse",
   },
