@@ -1,4 +1,15 @@
 import { projects } from "@/data/projects";
+import blacklacePostcard from "@/assets/laboratoire/blacklace-postcard.png";
+import bnn24Poster from "@/assets/laboratoire/bnn24-poster.png";
+import bnn24Ticket from "@/assets/laboratoire/bnn24-ticket.png";
+import feeBeletteClassified from "@/assets/laboratoire/fee-belette-classified.png";
+import feuchArchiveFolder from "@/assets/laboratoire/feuch-archive-folder.png";
+import fournaisePlan from "@/assets/laboratoire/fournaise-plan.png";
+import frunchCoaster from "@/assets/laboratoire/frunch-coaster.png";
+import natashaPolaroid from "@/assets/laboratoire/natasha-polaroid.png";
+import rotasMap from "@/assets/laboratoire/rotas-map.png";
+import satorCard from "@/assets/laboratoire/sator-card.png";
+import slobodaneNotebook from "@/assets/laboratoire/slobodane-notebook.png";
 
 export type ItemKind = "book" | "app" | "game" | "note" | "badge" | "card" | "decor" | "support" | "polaroid" | "map" | "ticket" | "poster" | "folder" | "coaster" | "playingCard";
 
@@ -101,6 +112,7 @@ export const deskItems: DeskItem[] = [
     y: 840,
     width: 210,
     rotation: -2,
+    image: satorCard,
     emoji: "◈",
     caption: "artefact",
   },
@@ -114,6 +126,7 @@ export const deskItems: DeskItem[] = [
     y: 828,
     width: 310,
     rotation: -1,
+    image: rotasMap,
     emoji: "🗺️",
     caption: "carte de terrain",
   },
@@ -127,6 +140,7 @@ export const deskItems: DeskItem[] = [
     y: 612,
     width: 260,
     rotation: 2,
+    image: feuchArchiveFolder,
     emoji: "📁",
     caption: "dossier classé",
   },
@@ -140,6 +154,7 @@ export const deskItems: DeskItem[] = [
     y: 790,
     width: 210,
     rotation: 7,
+    image: bnn24Ticket,
     emoji: "🎟️",
     caption: "badge presse",
   },
@@ -153,6 +168,7 @@ export const deskItems: DeskItem[] = [
     y: 820,
     width: 150,
     rotation: 3,
+    image: natashaPolaroid,
     emoji: "🎙️",
     caption: "photo presse",
   },
@@ -166,6 +182,7 @@ export const deskItems: DeskItem[] = [
     y: 824,
     width: 150,
     rotation: -5,
+    image: bnn24Poster,
     emoji: "📡",
     caption: "affiche pliée",
   },
@@ -179,6 +196,7 @@ export const deskItems: DeskItem[] = [
     y: 1008,
     width: 238,
     rotation: -2,
+    image: blacklacePostcard,
     emoji: "✉️",
     caption: "carte postale",
   },
@@ -192,6 +210,7 @@ export const deskItems: DeskItem[] = [
     y: 1000,
     width: 300,
     rotation: 1,
+    image: fournaisePlan,
     emoji: "🏭",
     caption: "blueprint froissé",
   },
@@ -205,6 +224,7 @@ export const deskItems: DeskItem[] = [
     y: 1038,
     width: 138,
     rotation: 4,
+    image: feeBeletteClassified,
     emoji: "🦦",
     caption: "confidentiel",
   },
@@ -218,6 +238,7 @@ export const deskItems: DeskItem[] = [
     y: 798,
     width: 220,
     rotation: 2,
+    image: slobodaneNotebook,
     emoji: "📓",
     caption: "carnet terrain",
   },
@@ -231,6 +252,7 @@ export const deskItems: DeskItem[] = [
     y: 1034,
     width: 132,
     rotation: 8,
+    image: frunchCoaster,
     emoji: "🥃",
     caption: "dessous de verre",
   },

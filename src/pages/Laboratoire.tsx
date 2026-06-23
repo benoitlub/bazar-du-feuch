@@ -43,6 +43,10 @@ function DeskItemContent({ item }: { item: DeskItem }) {
     );
   }
 
+  if (item.image) {
+    return <img src={item.image} alt={item.label} className="block h-auto w-full object-contain" draggable={false} />;
+  }
+
   if (item.kind === "note" || item.kind === "card") {
     return <div className="p-3"><pre className="m-0 whitespace-pre-wrap break-words font-mono text-[11px] leading-relaxed">{item.body ?? item.description}</pre></div>;
   }
