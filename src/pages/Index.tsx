@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { SupportSection } from "@/components/SupportSection";
 import { ContactSection } from "@/components/ContactSection";
+import { FeuchDecor } from "@/components/FeuchDecor";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -17,9 +18,10 @@ const Index = () => {
   }, [hash]);
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
+      <FeuchDecor />
       <Header />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <SupportSection />
         <ProjectsSection />
