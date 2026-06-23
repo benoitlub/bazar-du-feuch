@@ -1,26 +1,26 @@
 import { projects } from "@/data/projects";
+import feuchArchiveFolder from "@/assets/laboratoire/archives/dossier-feuch-institute-02.png";
 import badgeFeuchInstitute from "@/assets/laboratoire/badges/badge-feuch-institute-01.png";
-import blacklacePostcard from "@/assets/laboratoire/blacklace-postcard.png";
-import bnn24Poster from "@/assets/laboratoire/bnn24-poster.png";
-import bnn24Ticket from "@/assets/laboratoire/bnn24-ticket.png";
+import blacklacePostcard from "@/assets/laboratoire/blacklace/carte-postale-blacklace-01.png";
+import feeBeletteClassified from "@/assets/laboratoire/blacklace/fee-belette-classee-01.png";
+import fournaisePlan from "@/assets/laboratoire/blacklace/plan-fournase-feuch-01.png";
+import bnn24Poster from "@/assets/laboratoire/bnn24/affiche-bnn24-pliee-01.png";
 import coffeeTrace from "@/assets/laboratoire/coffee/tache-cafe-07.png";
-import feeBeletteClassified from "@/assets/laboratoire/fee-belette-classified.png";
-import feuchArchiveFolder from "@/assets/laboratoire/feuch-archive-folder.png";
-import fournaisePlan from "@/assets/laboratoire/fournaise-plan.png";
-import frunchCoaster from "@/assets/laboratoire/frunch-coaster.png";
-import natashaPolaroid from "@/assets/laboratoire/natasha-polaroid.png";
+import frunchCoaster from "@/assets/laboratoire/frunch/dessous-verre-frunch-01.png";
 import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
 import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
 import contactNote from "@/assets/laboratoire/notes/note-manuscrite-05.png";
+import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.png";
 import appArchive from "@/assets/laboratoire/papers/carnet-quadrille-plume-01.png";
 import bookArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
 import gameArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
 import prohibitedCardOne from "@/assets/laboratoire/papers/etiquette-vieillie-01.png";
 import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
 import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
-import rotasMap from "@/assets/laboratoire/rotas-map.png";
-import satorCard from "@/assets/laboratoire/sator-card.png";
-import slobodaneNotebook from "@/assets/laboratoire/slobodane-notebook.png";
+import natashaPolaroid from "@/assets/laboratoire/polaroids/polaroid-natasha-01.png";
+import rotasMap from "@/assets/laboratoire/rotas/carte-port-porsa-rotas-01.png";
+import satorCard from "@/assets/laboratoire/sator/carre-sator-01.png";
+import bnn24Ticket from "@/assets/laboratoire/tickets/ticket-bnn24-01.png";
 
 export type ItemKind = "book" | "app" | "game" | "note" | "badge" | "card" | "decor" | "support" | "polaroid" | "map" | "ticket" | "poster" | "folder" | "coaster" | "playingCard";
 
