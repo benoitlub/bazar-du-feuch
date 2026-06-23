@@ -10,6 +10,9 @@ import fournaisePlan from "@/assets/laboratoire/blacklace/plan-fournase-feuch-01
 import bnn24Poster from "@/assets/laboratoire/bnn24/affiche-bnn24-pliee-01.png";
 import coffeeTrace from "@/assets/laboratoire/coffee/tache-cafe-07.png";
 import frunchCoaster from "@/assets/laboratoire/frunch/dessous-verre-frunch-01.png";
+import blacklaceDiceCard from "@/assets/laboratoire/games/blacklace-dice-card.jpg";
+import prohibitedCard from "@/assets/laboratoire/games/prohibited-card.jpg";
+import prohibitedOnlineCard from "@/assets/laboratoire/games/prohibited-online-card.jpg";
 import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
 import neverlandOneArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
 import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
@@ -19,13 +22,10 @@ import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.pn
 import feuchInstituteArchive from "@/assets/laboratoire/papers/dossier-photos-vieilli-01.png";
 import blacklaceEchoArchive from "@/assets/laboratoire/papers/grand-feuillet-01.png";
 import unknownProjectArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
-import prohibitedCardOne from "@/assets/laboratoire/papers/etiquette-vieillie-01.png";
 import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
 import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
-import prohibitedOnlineArchive from "@/assets/laboratoire/polaroids/photo-ombre-01.png";
 import natashaPolaroid from "@/assets/laboratoire/polaroids/polaroid-natasha-01.png";
 import rotasMap from "@/assets/laboratoire/rotas/carte-port-porsa-rotas-01.png";
-import blacklaceDiceArchive from "@/assets/laboratoire/sator/carte-rotas-papier-01.png";
 import satorCard from "@/assets/laboratoire/sator/carre-sator-01.png";
 import bnn24Ticket from "@/assets/laboratoire/tickets/ticket-bnn24-01.png";
 
@@ -56,8 +56,8 @@ const projectAssets: Record<string, string> = {
   spectrl: spectrlCard,
   "creature-sync": creatureSyncCard,
   "clochette-lite": clochetteLiteCard,
-  "prohibited-online": prohibitedOnlineArchive,
-  "blacklace-dice": blacklaceDiceArchive,
+  "prohibited-online": prohibitedOnlineCard,
+  "blacklace-dice": blacklaceDiceCard,
   "blacklace-echo": blacklaceEchoArchive,
   "support-feuch-institute": badgeFeuchInstitute,
   "feuch-institute": feuchInstituteArchive,
@@ -299,7 +299,7 @@ export const deskItems: DeskItem[] = [
     y: 460,
     width: 108,
     rotation: -12,
-    image: prohibitedCardOne,
+    image: prohibitedCard,
     emoji: "♥",
     caption: "Pro.Hibited",
   },
