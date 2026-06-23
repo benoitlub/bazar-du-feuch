@@ -7,18 +7,24 @@ import fournaisePlan from "@/assets/laboratoire/blacklace/plan-fournase-feuch-01
 import bnn24Poster from "@/assets/laboratoire/bnn24/affiche-bnn24-pliee-01.png";
 import coffeeTrace from "@/assets/laboratoire/coffee/tache-cafe-07.png";
 import frunchCoaster from "@/assets/laboratoire/frunch/dessous-verre-frunch-01.png";
+import creatureSyncArchive from "@/assets/laboratoire/notes/note-manuscrite-02.png";
 import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
+import neverlandOneArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
 import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
 import contactNote from "@/assets/laboratoire/notes/note-manuscrite-05.png";
+import crotteManArchive from "@/assets/laboratoire/notes/note-manuscrite-01.png";
 import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.png";
-import appArchive from "@/assets/laboratoire/papers/carnet-quadrille-plume-01.png";
-import bookArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
-import gameArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
+import spectrlArchive from "@/assets/laboratoire/papers/carnet-quadrille-plume-01.png";
+import feuchInstituteArchive from "@/assets/laboratoire/papers/dossier-photos-vieilli-01.png";
+import blacklaceEchoArchive from "@/assets/laboratoire/papers/grand-feuillet-01.png";
+import unknownProjectArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
 import prohibitedCardOne from "@/assets/laboratoire/papers/etiquette-vieillie-01.png";
 import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
 import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
+import prohibitedOnlineArchive from "@/assets/laboratoire/polaroids/photo-ombre-01.png";
 import natashaPolaroid from "@/assets/laboratoire/polaroids/polaroid-natasha-01.png";
 import rotasMap from "@/assets/laboratoire/rotas/carte-port-porsa-rotas-01.png";
+import blacklaceDiceArchive from "@/assets/laboratoire/sator/carte-rotas-papier-01.png";
 import satorCard from "@/assets/laboratoire/sator/carre-sator-01.png";
 import bnn24Ticket from "@/assets/laboratoire/tickets/ticket-bnn24-01.png";
 
@@ -43,11 +49,16 @@ export type DeskItem = {
 };
 
 const byId = Object.fromEntries(projects.map((project) => [project.id, project]));
-const projectFallbacks: Partial<Record<ItemKind, string>> = {
-  book: bookArchive,
-  app: appArchive,
-  game: gameArchive,
-  support: badgeFeuchInstitute,
+const projectAssets: Record<string, string> = {
+  "neverland-ltd-1": neverlandOneArchive,
+  "crotte-man": crotteManArchive,
+  spectrl: spectrlArchive,
+  "creature-sync": creatureSyncArchive,
+  "prohibited-online": prohibitedOnlineArchive,
+  "blacklace-dice": blacklaceDiceArchive,
+  "blacklace-echo": blacklaceEchoArchive,
+  "support-feuch-institute": badgeFeuchInstitute,
+  "feuch-institute": feuchInstituteArchive,
 };
 
 const projectItem = (
@@ -70,7 +81,7 @@ const projectItem = (
       y,
       width,
       rotation,
-      image: projectFallbacks[kind] ?? bookArchive,
+      image: unknownProjectArchive,
       emoji: "❓",
     };
   }
@@ -85,7 +96,7 @@ const projectItem = (
     width,
     rotation,
     emoji: project.emoji,
-    image: project.image ?? projectFallbacks[kind] ?? bookArchive,
+    image: project.image ?? projectAssets[id] ?? unknownProjectArchive,
     url: project.url,
     actionLabel: project.actionLabel,
     eyebrow: project.category,
