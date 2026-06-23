@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
     url: "https://www.amazon.fr/dp/B0H49Z1K3H/",
     emoji: "🌍",
-    image: projectImages.terra,
+    image: projectImages.clochette,
     actionLabel: "Lire sur Amazon",
   },
   {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
       "Compagnon Android miniature en préparation : bulle, voix, micro, personnages et humeur de fée pas toujours compatible avec la dignité humaine.",
     url: "#soutenir",
     emoji: "🧚",
-    image: projectImages.clochette,
+    image: projectImages.terra,
     actionLabel: "Version Android en préparation",
   },
   {

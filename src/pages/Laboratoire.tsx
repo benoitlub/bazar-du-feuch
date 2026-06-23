@@ -1,4 +1,4 @@
-import { useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Header } from "@/components/Header";
 import { ItemModal } from "@/components/laboratoire/ItemModal";
 import { deskItems, type DeskItem } from "@/components/laboratoire/deskItems";
@@ -116,6 +116,18 @@ export default function Laboratoire() {
   const drag = useRef<DragState | null>(null);
   const maxZ = useRef(deskItems.length + 1);
 
+  useEffect(() => {
+    const previousRootOverscroll = document.documentElement.style.overscrollBehavior;
+    const previousBodyOverscroll = document.body.style.overscrollBehavior;
+    document.documentElement.style.overscrollBehavior = "none";
+    document.body.style.overscrollBehavior = "none";
+
+    return () => {
+      document.documentElement.style.overscrollBehavior = previousRootOverscroll;
+      document.body.style.overscrollBehavior = previousBodyOverscroll;
+    };
+  }, []);
+
   const zoomBy = (delta: number) => setZoom((value) => Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Number((value + delta).toFixed(2)))));
 
   const startDrag = (event: PointerEvent<HTMLDivElement>, item: DeskItem) => {
@@ -129,6 +141,7 @@ export default function Laboratoire() {
 
   const moveDrag = (event: PointerEvent<HTMLDivElement>) => {
     if (!drag.current) return;
+    if (event.pointerType === "touch") event.preventDefault();
     const current = drag.current;
     const dx = (event.clientX - current.startX) / zoom;
     const dy = (event.clientY - current.startY) / zoom;
@@ -143,7 +156,10 @@ export default function Laboratoire() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#080401] text-[#ead9b5]">
+    <main
+      className="flex h-[100dvh] flex-col overflow-hidden overscroll-none bg-[#080401] text-[#ead9b5]"
+      style={{ overscrollBehavior: "none" }}
+    >
       <Header />
 
       <div className="pointer-events-none fixed left-1/2 top-[62px] z-40 -translate-x-1/2 whitespace-nowrap rounded border border-amber-800/40 bg-[#120802]/90 px-3 py-1 font-serif-display text-[10px] uppercase tracking-[0.22em] text-amber-200/70 backdrop-blur">
@@ -157,7 +173,7 @@ export default function Laboratoire() {
         <span className="font-mono text-[10px] text-amber-200/50">{Math.round(zoom * 100)}%</span>
       </div>
 
-      <section className="relative flex-1 overflow-auto overscroll-none pt-0">
+      <section className="relative min-h-0 flex-1 overflow-auto overscroll-none pt-0" style={{ overscrollBehavior: "none" }}>
         <div style={{ width: DESK_W * zoom, height: DESK_H * zoom }} className="relative shrink-0">
           <div
             style={{ width: DESK_W, height: DESK_H, transform: `scale(${zoom})`, transformOrigin: "top left" }}
@@ -180,6 +196,7 @@ export default function Laboratoire() {
                   onPointerMove={moveDrag}
                   onPointerUp={() => stopDrag(item)}
                   onPointerCancel={() => stopDrag(item)}
+                  onLostPointerCapture={() => stopDrag(item)}
                   className={`absolute select-none rounded-sm ${frameStyle[item.kind]}`}
                   style={{
                     left: pos.x,
