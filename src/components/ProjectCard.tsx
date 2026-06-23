@@ -59,7 +59,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <article
       className={cn(
-        "paper-card group flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_hsl(25_40%_20%_/_0.45)]",
+        "paper-card worn group flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_hsl(25_40%_8%_/_0.7)]",
         categoryClass[project.category],
       )}
     >

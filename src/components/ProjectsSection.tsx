@@ -24,11 +24,11 @@ export const ProjectsSection = () => {
   return (
     <section id="projets" className="container mx-auto px-4 py-16 md:py-24">
       <header className="mx-auto max-w-2xl text-center">
-        <span className="label-stamp text-[0.7rem] text-primary">Les créations</span>
-        <h2 className="mt-2 font-serif-display text-4xl text-ink md:text-5xl">
+        <span className="label-stamp text-[0.7rem] text-gold">Les créations</span>
+        <h2 className="mt-2 font-serif-display text-4xl text-parchment md:text-5xl">
           Étagères du laboratoire
         </h2>
-        <p className="mt-4 text-muted-foreground">
+        <p className="mt-4 text-parchment/70">
           Chaque flacon contient une idée. Choisissez votre étagère préférée.
         </p>
       </header>
@@ -41,8 +41,8 @@ export const ProjectsSection = () => {
             className={cn(
               "label-stamp rounded-full border px-4 py-2 text-[0.7rem] transition-all",
               filter === f.id
-                ? "border-primary bg-primary text-primary-foreground shadow-md"
-                : "border-border bg-card text-ink/70 hover:border-primary/50 hover:text-primary",
+                ? "border-gold bg-gold text-gold-foreground shadow-md"
+                : "border-parchment/30 bg-[hsl(25_28%_18%/0.6)] text-parchment/80 hover:border-gold/60 hover:text-gold",
             )}
           >
             {f.label}

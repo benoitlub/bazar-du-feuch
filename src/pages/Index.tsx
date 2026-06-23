@@ -18,7 +18,7 @@ const Index = () => {
   }, [hash]);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="desk-surface relative min-h-screen">
       <FeuchDecor />
       <Header />
       <main className="relative z-10">

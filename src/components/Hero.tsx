@@ -1,5 +1,7 @@
 import heroImg from "@/assets/hero-lab.jpg";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { FlaskConical } from "lucide-react";
 
 export const Hero = () => (
   <section className="relative overflow-hidden border-b border-border">
@@ -42,6 +44,11 @@ export const Hero = () => (
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="apothecary" size="lg">
             <a href="#projets">Explorer le bazar</a>
+          </Button>
+          <Button asChild variant="copper" size="lg">
+            <Link to="/laboratoire">
+              <FlaskConical /> Entrer dans le laboratoire
+            </Link>
           </Button>
           <Button asChild variant="parchment" size="lg">
             <a href="#soutenir">Soutenir le laboratoire</a>
