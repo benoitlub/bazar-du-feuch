@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirection — Le Bazar du Feuch</title>
+    <script>
+      // GitHub Pages sert 404.html quand on recharge une route React comme /laboratoire.
+      // On redirige vers l'index en conservant la route demandée.
+      (function () {
+        var repo = "/bazar-du-feuch";
+        var l = window.location;
+        var path = l.pathname.replace(repo, "").replace(/^\//, "");
+        var query = l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "";
+        l.replace(repo + "/?/" + path + query + l.hash);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
