@@ -19,50 +19,7 @@ const labels: Record<DeskItem["kind"], string> = {
 };
 
 function VisualPreview({ item }: { item: DeskItem }) {
-  if (item.image) {
-    return <img src={item.image} alt="" className="h-full w-full object-contain drop-shadow-[0_16px_26px_rgba(0,0,0,0.55)]" />;
-  }
-
-  if (item.kind === "map") {
-    return (
-      <div className="relative h-full w-full overflow-hidden rounded-lg bg-[#d9c69a] p-4 text-[#2a1609]">
-        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_30%_28%,#6b4522_0_2px,transparent_3px),linear-gradient(90deg,rgba(80,45,20,.18)_1px,transparent_1px),linear-gradient(rgba(80,45,20,.18)_1px,transparent_1px)] bg-[length:56px_56px,24px_24px,24px_24px]" />
-        <div className="relative text-center font-serif-display text-lg uppercase tracking-widest">{item.label}</div>
-        <div className="relative mx-auto mt-5 h-28 w-40 rounded-[48%] border-2 border-[#5b3218] bg-[#b79a68]/50 shadow-inner" />
-        <div className="relative mt-3 text-center font-mono text-xs">attention marées + créatures</div>
-      </div>
-    );
-  }
-
-  if (item.kind === "ticket") {
-    return (
-      <div className="h-full w-full rounded-lg bg-[#dfcfaa] p-4 text-[#251407]">
-        <div className="flex items-center justify-between border-b-2 border-dashed border-[#5a3316] pb-2 font-mono text-sm uppercase">
-          <strong>BNN24</strong><span>PRESS</span>
-        </div>
-        <div className="mt-4 font-serif-display text-3xl">Accès salle de presse</div>
-        <div className="mt-3 grid h-16 w-16 place-items-center bg-[#251407] text-[9px] text-[#dfcfaa]">QR</div>
-      </div>
-    );
-  }
-
-  if (item.kind === "playingCard") {
-    return (
-      <div className="grid h-full w-full place-items-center rounded-xl border-4 border-[#321608] bg-[#efe1bd] p-5 text-[#2a0905]">
-        <div className="text-center">
-          <div className="text-5xl">{item.emoji}</div>
-          <div className="mt-4 font-serif-display text-4xl uppercase leading-none">{item.label}</div>
-          <div className="mt-3 font-mono text-xs uppercase tracking-widest">Pro.Hibited</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (item.kind === "coaster" || item.kind === "badge") {
-    return <div className="mx-auto grid aspect-square h-full place-items-center rounded-full border-8 border-[#6c4d1f] bg-[radial-gradient(circle,#2d1807,#090503)] text-7xl text-[#d6b25c]">{item.emoji}</div>;
-  }
-
-  return <div className="grid h-full w-full place-items-center rounded-xl bg-[#211006] text-7xl">{item.emoji ?? "✦"}</div>;
+  return <img src={item.image} alt={item.label} className="h-full w-full object-contain drop-shadow-[0_16px_26px_rgba(0,0,0,0.55)]" />;
 }
 
 export function ItemModal({ item, onClose }: { item: DeskItem; onClose: () => void }) {

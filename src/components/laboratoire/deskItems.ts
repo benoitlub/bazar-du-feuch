@@ -1,12 +1,23 @@
 import { projects } from "@/data/projects";
+import badgeFeuchInstitute from "@/assets/laboratoire/badges/badge-feuch-institute-01.png";
 import blacklacePostcard from "@/assets/laboratoire/blacklace-postcard.png";
 import bnn24Poster from "@/assets/laboratoire/bnn24-poster.png";
 import bnn24Ticket from "@/assets/laboratoire/bnn24-ticket.png";
+import coffeeTrace from "@/assets/laboratoire/coffee/tache-cafe-07.png";
 import feeBeletteClassified from "@/assets/laboratoire/fee-belette-classified.png";
 import feuchArchiveFolder from "@/assets/laboratoire/feuch-archive-folder.png";
 import fournaisePlan from "@/assets/laboratoire/fournaise-plan.png";
 import frunchCoaster from "@/assets/laboratoire/frunch-coaster.png";
 import natashaPolaroid from "@/assets/laboratoire/natasha-polaroid.png";
+import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
+import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
+import contactNote from "@/assets/laboratoire/notes/note-manuscrite-05.png";
+import appArchive from "@/assets/laboratoire/papers/carnet-quadrille-plume-01.png";
+import bookArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
+import gameArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
+import prohibitedCardOne from "@/assets/laboratoire/papers/etiquette-vieillie-01.png";
+import prohibitedCardTwo from "@/assets/laboratoire/papers/etiquette-vieillie-03.png";
+import prohibitedCardThree from "@/assets/laboratoire/papers/etiquette-vieillie-05.png";
 import rotasMap from "@/assets/laboratoire/rotas-map.png";
 import satorCard from "@/assets/laboratoire/sator-card.png";
 import slobodaneNotebook from "@/assets/laboratoire/slobodane-notebook.png";
@@ -23,7 +34,7 @@ export type DeskItem = {
   width: number;
   rotation: number;
   emoji?: string;
-  image?: string;
+  image: string;
   body?: string;
   url?: string;
   actionLabel?: string;
@@ -32,6 +43,12 @@ export type DeskItem = {
 };
 
 const byId = Object.fromEntries(projects.map((project) => [project.id, project]));
+const projectFallbacks: Partial<Record<ItemKind, string>> = {
+  book: bookArchive,
+  app: appArchive,
+  game: gameArchive,
+  support: badgeFeuchInstitute,
+};
 
 const projectItem = (
   id: string,
@@ -53,6 +70,7 @@ const projectItem = (
       y,
       width,
       rotation,
+      image: projectFallbacks[kind] ?? bookArchive,
       emoji: "❓",
     };
   }
@@ -67,7 +85,7 @@ const projectItem = (
     width,
     rotation,
     emoji: project.emoji,
-    image: project.image,
+    image: project.image ?? projectFallbacks[kind] ?? bookArchive,
     url: project.url,
     actionLabel: project.actionLabel,
     eyebrow: project.category,
@@ -86,19 +104,21 @@ export const deskItems: DeskItem[] = [
     y: 42,
     width: 330,
     rotation: -2,
+    image: introNote,
     emoji: "🐦",
     caption: "note d'accueil",
   },
   {
     id: "coffee-mug",
     kind: "coaster",
-    label: "Mug Feuch Institute",
-    description: "Le laboratoire manque régulièrement de café. C'est écrit sur le mug, donc c'est scientifiquement recevable.",
+    label: "Trace de café du Feuch Institute",
+    description: "Le laboratoire manque régulièrement de café. Cette trace persistante en constitue la preuve scientifiquement recevable.",
     body: "FEUCH INSTITUTE\n\nTaux de café : critique.\nDernière recharge : inconnue.\nEffet secondaire : prototypes plus bavards.",
     x: 1248,
     y: 34,
     width: 138,
     rotation: 4,
+    image: coffeeTrace,
     emoji: "☕",
     caption: "café officiel",
   },
@@ -266,6 +286,7 @@ export const deskItems: DeskItem[] = [
     y: 460,
     width: 108,
     rotation: -12,
+    image: prohibitedCardOne,
     emoji: "♥",
     caption: "Pro.Hibited",
   },
@@ -279,6 +300,7 @@ export const deskItems: DeskItem[] = [
     y: 454,
     width: 108,
     rotation: 5,
+    image: prohibitedCardTwo,
     emoji: "♠",
     caption: "Pro.Hibited",
   },
@@ -292,6 +314,7 @@ export const deskItems: DeskItem[] = [
     y: 466,
     width: 108,
     rotation: 13,
+    image: prohibitedCardThree,
     emoji: "🃏",
     caption: "Pro.Hibited",
   },
@@ -325,6 +348,7 @@ export const deskItems: DeskItem[] = [
     y: 372,
     width: 212,
     rotation: 5,
+    image: personalNote,
     emoji: "🐦",
     caption: "observation division",
   },
@@ -338,6 +362,7 @@ export const deskItems: DeskItem[] = [
     y: 1012,
     width: 260,
     rotation: -1,
+    image: contactNote,
     emoji: "✉️",
     caption: "courrier",
   },
