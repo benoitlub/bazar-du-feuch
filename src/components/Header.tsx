@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { to: "/", label: "Le Bazar", end: true },
+  { to: "/laboratoire", label: "Laboratoire" },
   { to: "/a-propos", label: "À propos" },
   { to: "/#contact", label: "Contact" },
 ];
