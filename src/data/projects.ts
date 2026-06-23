@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Dans un futur lointain, la Terre est devenue une archive. Grâce à une ancienne console transmise par sa grand-mère, Séïne explore le passé de l'humanité et découvre que certains regards traversent les siècles. Une fable cosmique sur la mémoire, la transmission et l'obstination du vivant.",
     url: "https://www.amazon.fr/dp/B0H4CN5MSH/",
     emoji: "🌍",
-    image: projectImages.clochette,
+    image: projectImages.terra,
     actionLabel: "Lire sur Amazon",
   },
   {
