@@ -1,4 +1,7 @@
 import { projects } from "@/data/projects";
+import clochetteLiteCard from "@/assets/laboratoire/apps/clochette-lite-card.jpg";
+import creatureSyncCard from "@/assets/laboratoire/apps/creature-sync-card.jpg";
+import spectrlCard from "@/assets/laboratoire/apps/spectrl-card.jpg";
 import feuchArchiveFolder from "@/assets/laboratoire/archives/dossier-feuch-institute-02.png";
 import badgeFeuchInstitute from "@/assets/laboratoire/badges/badge-feuch-institute-01.png";
 import blacklacePostcard from "@/assets/laboratoire/blacklace/carte-postale-blacklace-01.png";
@@ -7,14 +10,12 @@ import fournaisePlan from "@/assets/laboratoire/blacklace/plan-fournase-feuch-01
 import bnn24Poster from "@/assets/laboratoire/bnn24/affiche-bnn24-pliee-01.png";
 import coffeeTrace from "@/assets/laboratoire/coffee/tache-cafe-07.png";
 import frunchCoaster from "@/assets/laboratoire/frunch/dessous-verre-frunch-01.png";
-import creatureSyncArchive from "@/assets/laboratoire/notes/note-manuscrite-02.png";
 import introNote from "@/assets/laboratoire/notes/note-manuscrite-04.png";
 import neverlandOneArchive from "@/assets/laboratoire/papers/feuille-vieillie-01.png";
 import personalNote from "@/assets/laboratoire/notes/note-personnelle-01.png";
 import contactNote from "@/assets/laboratoire/notes/note-manuscrite-05.png";
 import crotteManArchive from "@/assets/laboratoire/notes/note-manuscrite-01.png";
 import slobodaneNotebook from "@/assets/laboratoire/notes/carnet-slobodane-01.png";
-import spectrlArchive from "@/assets/laboratoire/papers/carnet-quadrille-plume-01.png";
 import feuchInstituteArchive from "@/assets/laboratoire/papers/dossier-photos-vieilli-01.png";
 import blacklaceEchoArchive from "@/assets/laboratoire/papers/grand-feuillet-01.png";
 import unknownProjectArchive from "@/assets/laboratoire/papers/mini-carte-usee-01.png";
@@ -52,8 +53,9 @@ const byId = Object.fromEntries(projects.map((project) => [project.id, project])
 const projectAssets: Record<string, string> = {
   "neverland-ltd-1": neverlandOneArchive,
   "crotte-man": crotteManArchive,
-  spectrl: spectrlArchive,
-  "creature-sync": creatureSyncArchive,
+  spectrl: spectrlCard,
+  "creature-sync": creatureSyncCard,
+  "clochette-lite": clochetteLiteCard,
   "prohibited-online": prohibitedOnlineArchive,
   "blacklace-dice": blacklaceDiceArchive,
   "blacklace-echo": blacklaceEchoArchive,
@@ -96,7 +98,7 @@ const projectItem = (
     width,
     rotation,
     emoji: project.emoji,
-    image: project.image ?? projectAssets[id] ?? unknownProjectArchive,
+    image: projectAssets[id] ?? project.image ?? unknownProjectArchive,
     url: project.url,
     actionLabel: project.actionLabel,
     eyebrow: project.category,
