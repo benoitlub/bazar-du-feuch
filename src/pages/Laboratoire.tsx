@@ -1,322 +1,174 @@
-import { Link } from "react-router-dom";
-import { useMemo, useRef, useState } from "react";
-import { projects } from "@/data/projects";
+import { useRef, useState } from "react";
+import { Header } from "@/components/Header";
+import { ItemModal } from "@/components/laboratoire/ItemModal";
+import { deskItems, type DeskItem } from "@/components/laboratoire/deskItems";
 
-type BoardItem = {
-  id: string;
-  title: string;
-  kind: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  rotate?: number;
-  image?: string;
-  text?: string;
-  href?: string;
-  action?: string;
+const DESK_W = 1600;
+const DESK_H = 1050;
+const ZOOM_MIN = 0.3;
+const ZOOM_MAX = 1.25;
+const ZOOM_INIT = 0.48;
+
+type Pos = { x: number; y: number };
+type DragState = { id: string; startX: number; startY: number; itemX: number; itemY: number; moved: boolean };
+
+const initialPositions = Object.fromEntries(deskItems.map((item) => [item.id, { x: item.x, y: item.y }]));
+const initialZ = Object.fromEntries(deskItems.map((item, index) => [item.id, index + 1]));
+
+const frameStyle: Record<DeskItem["kind"], string> = {
+  book: "bg-[#f5efe3] text-[#251407] shadow-[4px_8px_22px_rgba(0,0,0,0.6)] overflow-hidden",
+  app: "bg-[#061111] border border-emerald-700/40 text-[#e2d0ad] shadow-[0_0_22px_rgba(0,180,150,0.12),4px_8px_22px_rgba(0,0,0,0.65)] overflow-hidden",
+  game: "bg-[#130909] border border-red-900/50 text-[#e6c2a4] shadow-[4px_8px_22px_rgba(0,0,0,0.65)] overflow-hidden",
+  note: "bg-[#f0e2b8] text-[#281405] shadow-[3px_6px_18px_rgba(0,0,0,0.55)]",
+  badge: "rounded-full border-2 border-[#7a5a12] bg-[radial-gradient(circle_at_33%_33%,#4a3210,#1a1005)] text-[#d5ad44] shadow-[3px_6px_18px_rgba(0,0,0,0.62)]",
+  card: "bg-[#e6d8b8] border border-[#9a8060] text-[#1f1006] shadow-[3px_6px_18px_rgba(0,0,0,0.55)]",
+  decor: "bg-[#201006] border border-amber-900/50 text-[#f3d58f] shadow-[4px_8px_22px_rgba(0,0,0,0.65)] overflow-hidden",
+  support: "bg-[linear-gradient(145deg,#2e1408,#180804)] border border-orange-800/50 text-[#e0c8a0] shadow-[4px_8px_22px_rgba(0,0,0,0.65)] overflow-hidden",
+  polaroid: "bg-white p-2 pb-6 text-[#321a0b] shadow-[3px_7px_18px_rgba(0,0,0,0.65)]",
 };
 
-const boardW = 2600;
-const boardH = 1700;
+function DeskItemContent({ item }: { item: DeskItem }) {
+  if (item.kind === "book") {
+    return (
+      <>
+        {item.image ? <img src={item.image} alt={item.label} className="block w-full object-cover" style={{ height: item.width * 1.42 }} draggable={false} /> : <div className="grid aspect-[1/1.42] place-items-center text-4xl">{item.emoji}</div>}
+        <div className="px-2 py-1 text-center font-serif-display text-[11px] uppercase leading-tight tracking-wider">{item.label}</div>
+      </>
+    );
+  }
 
-const makeItems = (): BoardItem[] => {
-  const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
-  const bookIds = [
-    "terra",
-    "gerard-et-gerard",
-    "neverland-ltd-1",
-    "neverland-ltd-2",
-    "feulette-tachetee",
-    "kif-et-molla",
-    "crotte-man",
-  ];
-  const appIds = ["spectrl", "creature-sync", "clochette-lite"];
-  const gameIds = ["prohibited-online", "blacklace-dice", "blacklace-echo"];
+  if (item.kind === "note" || item.kind === "card") {
+    return (
+      <div className="p-3">
+        <pre className="m-0 whitespace-pre-wrap break-words font-mono text-[11px] leading-relaxed">{item.body ?? item.description}</pre>
+      </div>
+    );
+  }
 
-  return [
-    {
-      id: "intro",
-      title: "Le Bazar du Feuch",
-      kind: "header",
-      x: 80,
-      y: 70,
-      w: 600,
-      h: 190,
-      text: "Laboratoire d'histoires, d'experiences et de creatures plus ou moins homologuees.",
-    },
-    {
-      id: "note-top",
-      title: "Bienvenue au Feuch Institute",
-      kind: "note",
-      x: 760,
-      y: 55,
-      w: 520,
-      h: 170,
-      rotate: -2,
-      text: "Ici, on observe, on note, on fabrique, on code, on ecrit et parfois ca fonctionne.",
-    },
-    {
-      id: "mug",
-      title: "Le laboratoire manque de cafe",
-      kind: "mug",
-      x: 1430,
-      y: 50,
-      w: 330,
-      h: 180,
-      rotate: 4,
-      text: "FEUCH INSTITUTE",
-    },
-    {
-      id: "soutenir-top",
-      title: "Soutenir le Feuch Institute",
-      kind: "support",
-      x: 1840,
-      y: 80,
-      w: 420,
-      h: 180,
-      href: "https://ko-fi.com/feuchinstitut",
-      action: "Offrir un cafe",
-      text: "Aidez le laboratoire a garder les experiences en vie.",
-    },
-    ...bookIds.map((id, i) => {
-      const p = byId[id];
-      return {
-        id: p.id,
-        title: p.title,
-        kind: "book",
-        x: 90 + i * 340,
-        y: id === "crotte-man" ? 750 : 330,
-        w: 260,
-        h: id === "crotte-man" ? 410 : 360,
-        rotate: [-2, 1, -1, 1, 3, -2, -3][i],
-        image: p.image,
-        text: p.description,
-        href: p.url,
-        action: "Lire sur Amazon",
-      };
-    }),
-    ...appIds.map((id, i) => {
-      const p = byId[id];
-      return {
-        id: p.id,
-        title: p.title,
-        kind: "app",
-        x: 560 + i * 350,
-        y: 820,
-        w: 310,
-        h: 330,
-        rotate: [-1, 1, -2][i],
-        image: p.image,
-        text: p.description,
-        href: p.url,
-        action: p.actionLabel ?? "Voir le projet",
-      };
-    }),
-    ...gameIds.map((id, i) => {
-      const p = byId[id];
-      return {
-        id: p.id,
-        title: p.title,
-        kind: "game",
-        x: 110 + i * 370,
-        y: 1250,
-        w: 320,
-        h: 330,
-        rotate: [2, -2, 1][i],
-        image: p.image,
-        text: p.description,
-        href: p.url,
-        action: p.actionLabel ?? "Voir le projet",
-      };
-    }),
-    {
-      id: "sator",
-      title: "Carre SATOR",
-      kind: "artifact",
-      x: 80,
-      y: 1590,
-      w: 300,
-      h: 250,
-      text: "SATOR AREPO TENET OPERA ROTAS",
-    },
-    {
-      id: "rotas-map",
-      title: "Port Porsa Rotas",
-      kind: "map",
-      x: 470,
-      y: 1540,
-      w: 460,
-      h: 300,
-      rotate: -1,
-      text: "Carte de terrain. Attention marees et creatures.",
-    },
-    {
-      id: "bnn24",
-      title: "BNN24",
-      kind: "ticket",
-      x: 1580,
-      y: 1480,
-      w: 360,
-      h: 220,
-      rotate: 2,
-      text: "Acces salle de presse. La verite n'a pas peur de la nuit.",
-    },
-    {
-      id: "support-card",
-      title: "Soutenir le Feuch Institute",
-      kind: "support",
-      x: 1990,
-      y: 1320,
-      w: 420,
-      h: 360,
-      href: "https://ko-fi.com/feuchinstitut",
-      action: "Offrir un cafe",
-      text: "Les livres, applications et experiences improbables du laboratoire sont finances grace aux visiteurs et aux mecenes du Feuch Institute.",
-    },
-    {
-      id: "contact",
-      title: "Contact du laboratoire",
-      kind: "note",
-      x: 1180,
-      y: 1540,
-      w: 330,
-      h: 250,
-      text: "lubertvlc@gmail.com",
-    },
-  ];
-};
+  if (item.kind === "badge") {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-1 p-2 text-center">
+        <span className="text-3xl">{item.emoji}</span>
+        <span className="font-serif-display text-[10px] uppercase tracking-widest">{item.label}</span>
+      </div>
+    );
+  }
 
-const LabCard = ({ item, onOpen }: { item: BoardItem; onOpen: (item: BoardItem) => void }) => {
-  const style = {
-    left: item.x,
-    top: item.y,
-    width: item.w,
-    height: item.h,
-    transform: `rotate(${item.rotate ?? 0}deg)`,
-  } as const;
+  if (item.kind === "polaroid") {
+    return (
+      <>
+        <div className="grid aspect-square place-items-center bg-[#2a2018] text-4xl">{item.image ? <img src={item.image} alt={item.label} className="h-full w-full object-cover" draggable={false} /> : item.emoji}</div>
+        <div className="mt-1 text-center font-serif-display text-[11px] italic">{item.label}</div>
+      </>
+    );
+  }
+
+  if (item.kind === "decor") {
+    return <div className="grid aspect-square place-items-center text-5xl">{item.image ? <img src={item.image} alt={item.label} className="h-full w-full object-cover" draggable={false} /> : item.emoji}</div>;
+  }
 
   return (
-    <button
-      type="button"
-      style={style}
-      onClick={() => onOpen(item)}
-      className={`absolute rounded-xl border text-left shadow-[0_18px_40px_rgba(0,0,0,0.5)] transition hover:z-30 hover:-translate-y-1 hover:scale-[1.02] ${
-        item.kind === "book"
-          ? "border-amber-800/70 bg-[#1a120c]"
-          : item.kind === "app"
-            ? "border-emerald-800/70 bg-[#07120c]"
-            : item.kind === "game"
-              ? "border-red-900/70 bg-[#120909]"
-              : item.kind === "support"
-                ? "border-amber-700 bg-[#d9c6a0] text-[#21150c]"
-                : "border-[#5a4934] bg-[#c8b48a] text-[#26180e]"
-      }`}
-    >
-      <div className="flex h-full flex-col overflow-hidden rounded-xl p-4">
-        {item.kind === "header" ? (
-          <>
-            <div className="font-serif-display text-5xl leading-none text-[#efe0bd]">{item.title}</div>
-            <p className="mt-4 text-sm text-[#c9b58d]">{item.text}</p>
-          </>
-        ) : item.kind === "mug" ? (
-          <div className="grid h-full place-items-center rounded-full border-4 border-[#4b3523] bg-[#b99b70] text-center font-serif-display text-3xl text-[#21150c]">
-            ☕<span className="block text-lg">{item.text}</span>
-          </div>
-        ) : (
-          <>
-            {item.image ? (
-              <img src={item.image} alt="" className="mx-auto h-40 max-w-full rounded-md object-contain shadow-lg" />
-            ) : null}
-            <h3 className="mt-3 font-serif-display text-2xl leading-tight">{item.title}</h3>
-            <p className="mt-2 line-clamp-4 text-sm opacity-80">{item.text}</p>
-            {item.action ? (
-              <span className="mt-auto inline-flex rounded-md border border-current/40 px-3 py-2 text-sm">{item.action}</span>
-            ) : null}
-          </>
-        )}
-      </div>
-    </button>
+    <div className="p-3">
+      <div className="mb-2 font-mono text-[8px] uppercase tracking-[0.22em] opacity-60">feuch_lab · {item.kind}</div>
+      <div className="mb-1 text-3xl">{item.emoji}</div>
+      <h3 className="font-serif-display text-lg leading-tight">{item.label}</h3>
+      <p className="mt-2 line-clamp-4 text-[11px] leading-relaxed opacity-70">{item.description}</p>
+    </div>
   );
-};
+}
 
-const Laboratoire = () => {
-  const items = useMemo(makeItems, []);
-  const [active, setActive] = useState<BoardItem | null>(null);
-  const [scale, setScale] = useState(0.58);
-  const [pos, setPos] = useState({ x: -120, y: -70 });
-  const drag = useRef<{ x: number; y: number; px: number; py: number } | null>(null);
+export default function Laboratoire() {
+  const [zoom, setZoom] = useState(ZOOM_INIT);
+  const [positions, setPositions] = useState<Record<string, Pos>>(initialPositions);
+  const [zIndices, setZIndices] = useState<Record<string, number>>(initialZ);
+  const [selected, setSelected] = useState<DeskItem | null>(null);
+  const drag = useRef<DragState | null>(null);
+  const maxZ = useRef(deskItems.length + 1);
+
+  const zoomBy = (delta: number) => setZoom((value) => Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Number((value + delta).toFixed(2)))));
+
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>, item: DeskItem) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const current = positions[item.id];
+    drag.current = { id: item.id, startX: event.clientX, startY: event.clientY, itemX: current.x, itemY: current.y, moved: false };
+    setZIndices((previous) => ({ ...previous, [item.id]: ++maxZ.current }));
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const moveDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag.current) return;
+    const current = drag.current;
+    const dx = (event.clientX - current.startX) / zoom;
+    const dy = (event.clientY - current.startY) / zoom;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) current.moved = true;
+    setPositions((previous) => ({ ...previous, [current.id]: { x: current.itemX + dx, y: current.itemY + dy } }));
+  };
+
+  const stopDrag = (item: DeskItem) => {
+    const current = drag.current;
+    drag.current = null;
+    if (current && !current.moved) setSelected(item);
+  };
 
   return (
-    <main className="h-screen overflow-hidden bg-[#080604] text-[#ead9b5]">
-      <div className="fixed left-4 top-4 z-50 flex flex-col gap-2">
-        <Link to="/" className="rounded-full border border-[#6a563a] bg-[#120d08]/90 px-4 py-2 text-sm shadow-lg">
-          ← Retour au Bazar
-        </Link>
-        <button onClick={() => setPos({ x: -120, y: -70 })} className="rounded-full border border-[#6a563a] bg-[#120d08]/90 px-4 py-2 text-sm shadow-lg">
-          Recentrer le bureau
-        </button>
-        <button onClick={() => setScale((v) => Math.min(0.9, v + 0.08))} className="rounded-full border border-[#6a563a] bg-[#120d08]/90 px-4 py-2 text-sm shadow-lg">
-          Zoom +
-        </button>
-        <button onClick={() => setScale((v) => Math.max(0.35, v - 0.08))} className="rounded-full border border-[#6a563a] bg-[#120d08]/90 px-4 py-2 text-sm shadow-lg">
-          Zoom -
-        </button>
+    <main className="flex min-h-screen flex-col bg-[#080401] text-[#ead9b5]">
+      <Header />
+
+      <div className="pointer-events-none fixed left-1/2 top-[62px] z-40 -translate-x-1/2 whitespace-nowrap rounded border border-amber-800/40 bg-[#120802]/90 px-3 py-1 font-serif-display text-[10px] uppercase tracking-[0.22em] text-amber-200/70 backdrop-blur">
+        ⚗ Bureau du Feuch Institute — drag · clic · explore
       </div>
 
-      <div
-        className="h-full w-full cursor-grab active:cursor-grabbing"
-        onPointerDown={(e) => {
-          drag.current = { x: e.clientX, y: e.clientY, px: pos.x, py: pos.y };
-          (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-        }}
-        onPointerMove={(e) => {
-          if (!drag.current) return;
-          setPos({ x: drag.current.px + e.clientX - drag.current.x, y: drag.current.py + e.clientY - drag.current.y });
-        }}
-        onPointerUp={() => {
-          drag.current = null;
-        }}
-      >
-        <section
-          style={{ width: boardW, height: boardH, transform: `translate(${pos.x}px, ${pos.y}px) scale(${scale})` }}
-          className="relative origin-top-left bg-[#15100a] bg-[radial-gradient(circle_at_20%_20%,rgba(125,91,50,0.25),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(34,87,57,0.18),transparent_25%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_45%)]"
-        >
-          <div className="absolute inset-0 border border-[#453322] shadow-[inset_0_0_120px_rgba(0,0,0,0.85)]" />
-          {Array.from({ length: 60 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute h-2 w-2 rounded-full bg-[#3a2a1a]/60"
-              style={{ left: (i * 131) % boardW, top: (i * 97) % boardH }}
-            />
-          ))}
-          {items.map((item) => (
-            <LabCard key={item.id} item={item} onOpen={setActive} />
-          ))}
-        </section>
+      <div className="fixed bottom-5 right-4 z-50 flex flex-col items-center gap-2">
+        <button className="grid h-10 w-10 place-items-center rounded border border-amber-700/50 bg-[#1c0c04]/95 text-lg shadow-lg" onClick={() => zoomBy(0.08)} aria-label="Zoom avant">＋</button>
+        <button className="grid h-10 w-10 place-items-center rounded border border-amber-700/50 bg-[#1c0c04]/95 text-lg shadow-lg" onClick={() => zoomBy(-0.08)} aria-label="Zoom arrière">－</button>
+        <button className="rounded border border-amber-700/50 bg-[#1c0c04]/95 px-3 py-2 text-xs shadow-lg" onClick={() => setZoom(ZOOM_INIT)}>Reset</button>
+        <span className="font-mono text-[10px] text-amber-200/50">{Math.round(zoom * 100)}%</span>
       </div>
 
-      {active ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4" onClick={() => setActive(null)}>
-          <article onClick={(e) => e.stopPropagation()} className="max-w-xl rounded-2xl border border-[#6a563a] bg-[#17100a] p-6 text-[#ead9b5] shadow-2xl">
-            {active.image ? <img src={active.image} alt="" className="mx-auto mb-4 max-h-64 rounded-lg object-contain" /> : null}
-            <h2 className="font-serif-display text-4xl">{active.title}</h2>
-            <p className="mt-4 text-[#c7b48f]">{active.text}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {active.href ? (
-                <a href={active.href} target={active.href.startsWith("#") ? undefined : "_blank"} rel="noreferrer noopener" className="rounded-md bg-[#b54832] px-4 py-2 text-white">
-                  {active.action ?? "Ouvrir"}
-                </a>
-              ) : null}
-              <button onClick={() => setActive(null)} className="rounded-md border border-[#6a563a] px-4 py-2">
-                Refermer
-              </button>
-            </div>
-          </article>
+      <section className="relative flex-1 overflow-auto overscroll-none pt-0">
+        <div style={{ width: DESK_W * zoom, height: DESK_H * zoom }} className="relative shrink-0">
+          <div
+            style={{ width: DESK_W, height: DESK_H, transform: `scale(${zoom})`, transformOrigin: "top left" }}
+            className="relative bg-[#180c04] shadow-[inset_0_0_140px_rgba(0,0,0,0.85)] bg-[radial-gradient(ellipse_at_38%_28%,rgba(80,38,8,0.55),transparent_50%),radial-gradient(ellipse_at_72%_68%,rgba(40,18,4,0.5),transparent_46%)]"
+          >
+            {[[28, 26, "Bibliothèque"], [28, 270, "Applications"], [28, 480, "Jeux & prototypes"], [28, 678, "Soutenir"], [858, 24, "Archives Blacklace"]].map(([x, y, label]) => (
+              <div key={String(label)} className="absolute font-serif-display text-[11px] uppercase tracking-[0.2em] text-amber-200/25" style={{ left: Number(x), top: Number(y) }}>{label}</div>
+            ))}
+
+            {[268, 484, 692].map((y) => <div key={y} className="absolute left-5 h-px w-[820px] bg-gradient-to-r from-amber-700/20 via-amber-700/10 to-transparent" style={{ top: y }} />)}
+            <div className="absolute bottom-3 left-[848px] top-3 w-px bg-gradient-to-b from-amber-700/20 via-amber-700/10 to-transparent" />
+
+            {deskItems.map((item) => {
+              const pos = positions[item.id];
+              return (
+                <div
+                  key={item.id}
+                  onPointerDown={(event) => startDrag(event, item)}
+                  onPointerMove={moveDrag}
+                  onPointerUp={() => stopDrag(item)}
+                  onPointerCancel={() => stopDrag(item)}
+                  className={`absolute select-none rounded-sm ${frameStyle[item.kind]}`}
+                  style={{
+                    left: pos.x,
+                    top: pos.y,
+                    width: item.width,
+                    height: item.kind === "badge" ? item.width : undefined,
+                    zIndex: zIndices[item.id],
+                    transform: `rotate(${item.rotation}deg)`,
+                    touchAction: "none",
+                    cursor: "grab",
+                  }}
+                >
+                  <DeskItemContent item={item} />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      ) : null}
+      </section>
+
+      {selected ? <ItemModal item={selected} onClose={() => setSelected(null)} /> : null}
     </main>
   );
-};
-
-export default Laboratoire;
+}
