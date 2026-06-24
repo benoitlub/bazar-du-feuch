@@ -285,3 +285,275 @@
 .animate-bubble { animation: bubble 3s ease-in-out infinite; }
 .animate-float { animation: float-slow 6s ease-in-out infinite; }
 .animate-wave-scan { animation: wave-scan 8s ease-in-out infinite; }
+
+.lab-viewport {
+  touch-action: none;
+  overscroll-behavior: none;
+  background:
+    radial-gradient(ellipse at center, rgba(42, 20, 6, 0.5), rgba(3, 2, 1, 0.96) 76%),
+    #050301;
+  cursor: grab;
+}
+
+.lab-viewport:active {
+  cursor: grabbing;
+}
+
+.lab-desk {
+  transform-origin: 0 0;
+  will-change: transform;
+  overflow: hidden;
+  isolation: isolate;
+  border: 14px solid #1c0d05;
+  box-shadow:
+    inset 0 0 0 2px rgba(194, 121, 55, 0.22),
+    inset 0 0 150px rgba(0, 0, 0, 0.9),
+    0 35px 90px rgba(0, 0, 0, 0.92);
+  background-color: #2a1208;
+  background-image:
+    radial-gradient(circle at 18% 43%, transparent 0 72px, rgba(17, 7, 2, 0.2) 73px 76px, transparent 78px),
+    radial-gradient(circle at 83% 28%, transparent 0 59px, rgba(12, 5, 2, 0.28) 60px 63px, transparent 65px),
+    linear-gradient(92deg, transparent 0 11%, rgba(10, 4, 1, 0.22) 11.1% 11.4%, transparent 11.5% 34%, rgba(104, 52, 18, 0.18) 34.2% 34.5%, transparent 34.6% 68%, rgba(9, 4, 1, 0.2) 68.1% 68.4%, transparent 68.5%),
+    repeating-linear-gradient(2deg, rgba(255, 188, 94, 0.025) 0 2px, transparent 2px 15px),
+    linear-gradient(100deg, #1b0b04, #4a210c 38%, #2d1307 72%, #160904);
+}
+
+.lab-desk::before,
+.lab-desk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lab-desk::before {
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(0, 0, 0, 0.2) 50%, transparent 50.2%),
+    radial-gradient(ellipse at 48% 50%, transparent 52%, rgba(4, 2, 1, 0.56) 100%);
+  mix-blend-mode: multiply;
+}
+
+.lab-desk::after {
+  opacity: 0.22;
+  background-image:
+    repeating-linear-gradient(88deg, transparent 0 43px, rgba(227, 145, 72, 0.1) 44px, transparent 46px),
+    repeating-linear-gradient(2deg, transparent 0 91px, rgba(0, 0, 0, 0.11) 92px, transparent 94px);
+}
+
+.lab-object {
+  touch-action: none;
+  cursor: grab;
+  will-change: left, top, transform;
+  filter: drop-shadow(5px 9px 8px rgba(0, 0, 0, 0.6));
+  transition: filter 140ms ease;
+}
+
+.lab-object:hover {
+  filter: drop-shadow(7px 12px 11px rgba(0, 0, 0, 0.68)) brightness(1.04);
+}
+
+.lab-object:active {
+  cursor: grabbing;
+  filter: drop-shadow(12px 17px 12px rgba(0, 0, 0, 0.7));
+}
+
+.lab-control {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(183, 112, 45, 0.5);
+  border-radius: 4px;
+  color: rgba(252, 224, 172, 0.88);
+  background: rgba(26, 12, 5, 0.94);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.42), inset 0 0 12px rgba(148, 74, 24, 0.15);
+}
+
+.lab-control svg {
+  width: 17px;
+  height: 17px;
+}
+
+.lab-device {
+  position: relative;
+  padding: 12px;
+  overflow: hidden;
+  border: 2px solid #614225;
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 25%),
+    linear-gradient(145deg, #352519, #0e0b08 68%);
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.65),
+    inset 0 0 18px rgba(218, 139, 60, 0.08),
+    0 8px 12px rgba(0, 0, 0, 0.45);
+}
+
+.lab-device__screen {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #090a08;
+  border-radius: 3px;
+  background: #030504;
+  box-shadow: inset 0 0 18px rgba(74, 247, 181, 0.12);
+}
+
+.lab-device__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-top: 8px;
+}
+
+.lab-device__controls i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #8a6337;
+  border-radius: 50%;
+  background: #24150b;
+  box-shadow: inset 0 0 3px #000;
+}
+
+.lab-device__controls i:first-child {
+  background: #70411f;
+}
+
+.lab-device--tablet {
+  padding: 10px 15px;
+  border-radius: 11px;
+}
+
+.lab-device--phone {
+  padding: 13px 8px 20px;
+  border-radius: 18px;
+}
+
+.lab-device--phone::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 28%;
+  height: 3px;
+  border-radius: 3px;
+  background: #060504;
+  transform: translateX(-50%);
+}
+
+.lab-device--phone .lab-device__controls {
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.lab-device--phone .lab-device__controls i {
+  display: none;
+}
+
+.lab-device--phone .lab-device__controls i:first-child {
+  display: block;
+  width: 17px;
+  height: 4px;
+  border-radius: 4px;
+}
+
+.lab-device--radio {
+  padding: 14px 34px 22px 13px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 7px, rgba(0, 0, 0, 0.25) 8px 10px),
+    linear-gradient(145deg, #3b2818, #12100c);
+}
+
+.lab-device--radio .lab-device__controls {
+  position: absolute;
+  right: 9px;
+  top: 12px;
+  flex-direction: column;
+}
+
+.lab-device--crt {
+  padding: 15px 15px 25px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #4a3a29, #17130f 70%);
+}
+
+.lab-device--crt .lab-device__screen {
+  border-width: 7px;
+  border-radius: 10px 10px 18px 18px / 8px 8px 12px 12px;
+}
+
+.lab-scanlines {
+  opacity: 0.58;
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgba(100, 231, 255, 0.12) 49%, rgba(255, 68, 217, 0.12) 51%, transparent 52%),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(255, 255, 255, 0.11) 3px 4px);
+  animation: lab-video-jitter 4s steps(2, end) infinite;
+  mix-blend-mode: screen;
+}
+
+.lab-sator-mark {
+  position: absolute;
+  left: 810px;
+  top: 890px;
+  z-index: 0;
+  display: grid;
+  width: 160px;
+  transform: rotate(-3deg);
+  color: rgba(8, 3, 1, 0.3);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: 0.28em;
+  text-align: center;
+  text-shadow: 0 1px rgba(134, 69, 25, 0.16);
+}
+
+.lab-feulette {
+  position: absolute;
+  left: -120px;
+  z-index: 17;
+  width: 74px;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 13px rgba(192, 93, 255, 0.75)) saturate(1.25);
+  animation: lab-feulette-cross 9s linear forwards;
+}
+
+.lab-feulette img {
+  width: 100%;
+  transform: rotate(7deg);
+}
+
+.lab-feulette--reverse {
+  left: auto;
+  right: -120px;
+  animation-name: lab-feulette-cross-reverse;
+}
+
+@keyframes lab-video-jitter {
+  0%, 92%, 100% { transform: translateX(0); opacity: 0.5; }
+  93% { transform: translateX(2px); opacity: 0.68; }
+  95% { transform: translateX(-2px); opacity: 0.42; }
+}
+
+@keyframes lab-feulette-cross {
+  0% { transform: translate3d(0, 20px, 0) rotate(-5deg); opacity: 0; }
+  8%, 88% { opacity: 0.84; }
+  45% { transform: translate3d(920px, -35px, 0) rotate(5deg); }
+  100% { transform: translate3d(2010px, 30px, 0) rotate(-3deg); opacity: 0; }
+}
+
+@keyframes lab-feulette-cross-reverse {
+  0% { transform: translate3d(0, -20px, 0) scaleX(-1) rotate(-5deg); opacity: 0; }
+  8%, 88% { opacity: 0.84; }
+  45% { transform: translate3d(-920px, 35px, 0) scaleX(-1) rotate(5deg); }
+  100% { transform: translate3d(-2010px, -30px, 0) scaleX(-1) rotate(-3deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-feulette,
+  .lab-scanlines {
+    animation: none;
+  }
+}
