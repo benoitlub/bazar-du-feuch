@@ -23,6 +23,14 @@ import pinBlue from "@/assets/laboratoire/pins/punaise-03.png";
 import pinAmber from "@/assets/laboratoire/pins/punaise-04.png";
 import pinWhite from "@/assets/laboratoire/pins/punaise-05.png";
 import blankBnnTicket from "@/assets/laboratoire/tickets/ticket-bnn24-vierge-01.png";
+import feuchMug from "@/assets/laboratoire/decor/tasse-feuch-institute.png";
+import blackFeather from "@/assets/laboratoire/decor/plume-noire.png";
+import copperMagnifier from "@/assets/laboratoire/decor/loupe-cuivre.png";
+import frunchGlass from "@/assets/laboratoire/decor/verre-frunch.png";
+import moscomiulGlass from "@/assets/laboratoire/decor/verre-moscomiul.png";
+import rotasCompass from "@/assets/laboratoire/decor/boussole-rotas.png";
+import greenFlask from "@/assets/laboratoire/decor/fiole-verte-feuch.png";
+import purpleFlask from "@/assets/laboratoire/decor/fiole-violette-blacklace.png";
 
 export type DeskDecor = {
   id: string;
@@ -64,4 +72,12 @@ export const deskDecor: DeskDecor[] = [
   { id: "pin-blue", label: "Punaise bleue Rotas", image: pinBlue, x: 1080, y: 506, width: 40, rotation: -8, zIndex: 44 },
   { id: "pin-amber", label: "Punaise du carnet", image: pinAmber, x: 356, y: 420, width: 39, rotation: 11, zIndex: 44, motion: "glint" },
   { id: "pin-white", label: "Punaise des archives", image: pinWhite, x: 1602, y: 340, width: 39, rotation: -7, zIndex: 44, motion: "glint" },
+  { id: "feuch-mug", label: "Tasse du Feuch Institute", image: feuchMug, x: 1082, y: 52, width: 176, rotation: -5, opacity: 1, zIndex: 44 },
+  { id: "black-feather", label: "Plume noire d'observation", image: blackFeather, x: 1090, y: 180, width: 92, rotation: 17, opacity: 1, zIndex: 44, motion: "paper" },
+  { id: "creature-magnifier", label: "Loupe Creature-Sync", image: copperMagnifier, x: 660, y: 354, width: 94, rotation: -12, opacity: 1, zIndex: 44, motion: "glint" },
+  { id: "creature-flask", label: "Fiole verte du laboratoire", image: greenFlask, x: 622, y: 650, width: 72, rotation: 8, opacity: 1, zIndex: 44, motion: "glint" },
+  { id: "blacklace-flask", label: "Fiole violette Blacklace", image: purpleFlask, x: 590, y: 680, width: 48, rotation: -9, opacity: 1, zIndex: 44, motion: "glint" },
+  { id: "rotas-compass", label: "Boussole de Port Porsa Rotas", image: rotasCompass, x: 1002, y: 296, width: 108, rotation: -8, opacity: 1, zIndex: 44 },
+  { id: "frunch-glass", label: "Verre de Frunch", image: frunchGlass, x: 826, y: 954, width: 88, rotation: 5, opacity: 1, zIndex: 44 },
+  { id: "moscomiul-glass", label: "Verre Moscomiul", image: moscomiulGlass, x: 1682, y: 816, width: 92, rotation: -6, opacity: 1, zIndex: 44 },
 ];
