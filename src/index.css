@@ -358,6 +358,52 @@
   filter: drop-shadow(12px 17px 12px rgba(0, 0, 0, 0.7));
 }
 
+.lab-object--featured {
+  filter:
+    drop-shadow(7px 13px 10px rgba(0, 0, 0, 0.72))
+    drop-shadow(0 0 9px rgba(192, 120, 54, 0.14));
+}
+
+.lab-object--featured::after {
+  content: "";
+  position: absolute;
+  inset: 3% 7% 42% 14%;
+  pointer-events: none;
+  border-radius: 45%;
+  opacity: 0.18;
+  background: linear-gradient(118deg, transparent 30%, rgba(255, 230, 180, 0.52) 48%, transparent 64%);
+  mix-blend-mode: screen;
+}
+
+.lab-decor {
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.38));
+  transform-origin: center;
+}
+
+.lab-decor--paper {
+  animation: lab-paper-breath 8s ease-in-out infinite;
+}
+
+.lab-decor--glint {
+  animation: lab-metal-glint 7s ease-in-out infinite;
+}
+
+.lab-dust {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    radial-gradient(circle at 16% 28%, rgba(255, 224, 159, 0.72) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 38% 67%, rgba(255, 210, 131, 0.5) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 61% 19%, rgba(255, 239, 193, 0.55) 0 0.8px, transparent 1.5px),
+    radial-gradient(circle at 76% 54%, rgba(255, 220, 151, 0.56) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 89% 82%, rgba(255, 235, 184, 0.46) 0 0.9px, transparent 1.5px);
+  background-size: 227px 181px, 293px 239px, 347px 277px, 263px 211px, 319px 251px;
+  animation: lab-dust-drift 18s linear infinite;
+}
+
 .lab-control {
   display: grid;
   width: 40px;
@@ -537,6 +583,22 @@
   95% { transform: translateX(-2px); opacity: 0.42; }
 }
 
+@keyframes lab-paper-breath {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -1.5px; }
+}
+
+@keyframes lab-metal-glint {
+  0%, 76%, 100% { filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.38)) brightness(1); }
+  82% { filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.42)) brightness(1.28); }
+}
+
+@keyframes lab-dust-drift {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  50% { opacity: 0.28; }
+  100% { background-position: 28px -18px, -18px -26px, 15px -31px, -24px -14px, 21px -23px; }
+}
+
 @keyframes lab-feulette-cross {
   0% { transform: translate3d(0, 20px, 0) rotate(-5deg); opacity: 0; }
   8%, 88% { opacity: 0.84; }
@@ -553,7 +615,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .lab-feulette,
-  .lab-scanlines {
+  .lab-scanlines,
+  .lab-decor,
+  .lab-dust {
     animation: none;
   }
 }

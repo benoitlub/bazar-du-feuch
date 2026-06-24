@@ -415,6 +415,7 @@ export default function Laboratoire() {
           <div className="lab-sator-mark" aria-hidden="true">
             <span>SATOR</span><span>AREPO</span><span>TENET</span><span>OPERA</span><span>ROTAS</span>
           </div>
+          <div className="lab-dust" aria-hidden="true" />
 
           {deskDecor.map((decor) => (
             <img
@@ -422,7 +423,9 @@ export default function Laboratoire() {
               src={decor.image}
               alt=""
               draggable={false}
-              className="pointer-events-none absolute select-none"
+              className={`lab-decor pointer-events-none absolute select-none ${
+                decor.motion ? `lab-decor--${decor.motion}` : ""
+              }`}
               style={{
                 left: decor.x,
                 top: decor.y,
@@ -445,7 +448,9 @@ export default function Laboratoire() {
                 onPointerMove={moveDrag}
                 onPointerUp={(event) => stopDrag(item, event.pointerId)}
                 onPointerCancel={(event) => stopDrag(item, event.pointerId)}
-                className="lab-object absolute select-none"
+                className={`lab-object absolute select-none ${
+                  item.id === "feuch-folder" ? "lab-object--featured" : ""
+                }`}
                 style={{
                   left: pos.x,
                   top: pos.y,
