@@ -5,6 +5,7 @@ import spectrlCard from "@/assets/laboratoire/apps/spectrl-card.jpg";
 import feuchArchiveFolder from "@/assets/laboratoire/archives/dossier-feuch-institute-02.png";
 import badgeFeuchInstitute from "@/assets/laboratoire/badges/badge-feuch-institute-01.png";
 import blacklacePostcard from "@/assets/laboratoire/blacklace/carte-postale-blacklace-01.png";
+import moscomiulBreak from "@/assets/laboratoire/blacklace/coupure-moscomiul-break-01.png";
 import feeBeletteClassified from "@/assets/laboratoire/blacklace/fee-belette-classee-01.png";
 import fournaisePlan from "@/assets/laboratoire/blacklace/plan-fournase-feuch-01.png";
 import bnn24Poster from "@/assets/laboratoire/bnn24/affiche-bnn24-pliee-01.png";
@@ -50,6 +51,8 @@ export type DeskItem = {
   actionLabel?: string;
   eyebrow?: string;
   caption?: string;
+  media?: "youtube";
+  signalEffect?: boolean;
 };
 
 const byId = Object.fromEntries(projects.map((project) => [project.id, project]));
@@ -240,30 +243,55 @@ export const deskItems: DeskItem[] = [
   {
     id: "natasha-archive",
     kind: "polaroid",
-    label: "Natasha — BNN24",
-    description: "Polaroid de Natasha à Port Porsa. Elle sait quelque chose. Ou elle lit juste le prompteur avec beaucoup trop de calme.",
-    body: "NATASHA — PORT PORSA\n12/06\n\nObservation : calme suspect.\nMicro : BNN24.\nArrière-plan : probablement instable.",
+    label: "Natasha — correspondante BNN24",
+    description: "Journaliste BNN24 et correspondante de Port Porsa Rotas. Natasha mène des enquêtes de terrain, recueille des interviews et documente les phénomènes étranges de Blacklace Island.",
+    body: "DOSSIER PERSONNAGE — NATASHA\n\nFonction : journaliste BNN24\nAffectation : Port Porsa Rotas\nSpécialités : enquêtes, interviews, phénomènes étranges\n\nSon calme à l'antenne contraste avec des reportages menés au plus près des anomalies. Ses archives audio prolongent les dossiers diffusés par BNN24.",
     x: 950,
     y: 820,
     width: 150,
     rotation: 3,
     image: natashaPortrait,
+    url: "https://youtube.com/playlist?list=PLtFv3lwLTGM49J7nEiCFZKanTfBez11-t&si=OymSfpzoIMtYmkeh",
+    actionLabel: "Écouter Natasha Podcast",
+    media: "youtube",
     emoji: "🎙️",
-    caption: "photo presse",
+    caption: "journaliste · podcast",
   },
   {
     id: "bnn-poster",
     kind: "poster",
-    label: "Affiche BNN24 pliée",
-    description: "Affiche violette retrouvée derrière une étagère. Slogan officiel : la vérité n'a pas peur de la nuit.",
-    body: "BNN24\nLA VÉRITÉ N'A PAS PEUR DE LA NUIT\n\nSignal : variable.\nAntenne : capricieuse.\nPrésentatrice : imperturbable.",
+    label: "BNN24 — Archives vidéo",
+    description: "Chaîne d'information de Blacklace Island. Reportages, éditions spéciales et signaux captés depuis Port Porsa Rotas.",
+    body: "BNN24\nLA VÉRITÉ N'A PAS PEUR DE LA NUIT\n\nNature : archives audiovisuelles\nZone de couverture : Blacklace Island\nCorrespondante : Natasha\n\nLe signal reste variable, l'antenne capricieuse et les phénomènes filmés rarement compatibles avec une grille de programmes normale.",
     x: 1124,
     y: 824,
     width: 150,
     rotation: -5,
     image: bnn24Poster,
+    url: "https://youtube.com/playlist?list=PLtFv3lwLTGM7ojziBvTomDBVlTNz7BzZs&si=9p3VWPq16HgxYpdD",
+    actionLabel: "Voir les archives BNN24",
+    media: "youtube",
+    signalEffect: true,
     emoji: "📡",
-    caption: "affiche pliée",
+    caption: "archives audiovisuelles",
+  },
+  {
+    id: "moscomiul-break",
+    kind: "poster",
+    label: "Moscomiul Break",
+    description: "Série de phénomènes d'origine inconnue documentés autour de Moscomiul. Images instables, témoignages fragmentaires et ruptures de signal.",
+    body: "MOSCOMIUL BREAK\n\nClassement : phénomène audiovisuel\nOrigine : inconnue\nÉtat du signal : instable\n\nLes enregistrements alternent observations de terrain, ruptures de transmission et indices difficiles à replacer dans une chronologie fiable.",
+    x: 866,
+    y: 814,
+    width: 158,
+    rotation: -3,
+    image: moscomiulBreak,
+    url: "https://youtube.com/playlist?list=PLtFv3lwLTGM65DZeKI5u1vDScwJn4_yyB&si=ASUDWpvF4LJsUuiP",
+    actionLabel: "Voir Moscomiul Break",
+    media: "youtube",
+    signalEffect: true,
+    emoji: "📼",
+    caption: "archives audiovisuelles",
   },
   {
     id: "blacklace-postcard",

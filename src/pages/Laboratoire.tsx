@@ -16,7 +16,14 @@ const initialPositions = Object.fromEntries(deskItems.map((item) => [item.id, { 
 const initialZ = Object.fromEntries(deskItems.map((item, index) => [item.id, index + 1]));
 
 function DeskItemContent({ item }: { item: DeskItem }) {
-  return <img src={item.image} alt={item.label} className="block h-auto w-full object-contain" draggable={false} />;
+  return (
+    <div className="relative overflow-hidden">
+      <img src={item.image} alt={item.label} className="block h-auto w-full object-contain" draggable={false} />
+      {item.signalEffect ? (
+        <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent_0_3px,rgba(255,255,255,0.08)_3px_4px)] opacity-55 mix-blend-screen" />
+      ) : null}
+    </div>
+  );
 }
 
 export default function Laboratoire() {
@@ -90,7 +97,7 @@ export default function Laboratoire() {
             style={{ width: DESK_W, height: DESK_H, transform: `scale(${zoom})`, transformOrigin: "top left" }}
             className="relative bg-[#180c04] shadow-[inset_0_0_140px_rgba(0,0,0,0.85)] bg-[radial-gradient(ellipse_at_38%_28%,rgba(80,38,8,0.55),transparent_50%),radial-gradient(ellipse_at_72%_68%,rgba(40,18,4,0.5),transparent_46%)]"
           >
-            {[[28, 26, "Bibliothèque"], [28, 310, "Applications"], [28, 540, "Jeux & prototypes"], [858, 24, "Archives Blacklace"], [858, 768, "Cartes, plans & dossiers"]].map(([x, y, label]) => (
+            {[[28, 26, "Bibliothèque"], [28, 310, "Applications"], [28, 540, "Jeux & prototypes"], [858, 24, "Archives Blacklace"], [858, 772, "Archives Audiovisuelles"], [858, 982, "Cartes, plans & dossiers"]].map(([x, y, label]) => (
               <div key={String(label)} className="absolute font-serif-display text-[11px] uppercase tracking-[0.2em] text-amber-200/25" style={{ left: Number(x), top: Number(y) }}>{label}</div>
             ))}
 

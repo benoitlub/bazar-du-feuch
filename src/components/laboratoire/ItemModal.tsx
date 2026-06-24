@@ -1,4 +1,5 @@
 import type { DeskItem } from "./deskItems";
+import { Youtube } from "lucide-react";
 
 const labels: Record<DeskItem["kind"], string> = {
   book: "Livre du laboratoire",
@@ -19,7 +20,17 @@ const labels: Record<DeskItem["kind"], string> = {
 };
 
 function VisualPreview({ item }: { item: DeskItem }) {
-  return <img src={item.image} alt={item.label} className="h-full w-full object-contain drop-shadow-[0_16px_26px_rgba(0,0,0,0.55)]" />;
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <img src={item.image} alt={item.label} className="h-full w-full object-contain drop-shadow-[0_16px_26px_rgba(0,0,0,0.55)]" />
+      {item.signalEffect ? (
+        <>
+          <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent_0_3px,rgba(255,255,255,0.06)_3px_4px)] opacity-50 mix-blend-screen" />
+          <div className="pointer-events-none absolute inset-y-0 left-[18%] w-px bg-cyan-300/35 shadow-[12px_0_24px_rgba(217,70,239,0.35)]" />
+        </>
+      ) : null}
+    </div>
+  );
 }
 
 export function ItemModal({ item, onClose }: { item: DeskItem; onClose: () => void }) {
@@ -42,7 +53,10 @@ export function ItemModal({ item, onClose }: { item: DeskItem; onClose: () => vo
           </div>
 
           <div className="rounded-xl bg-[#ead9b5] p-5 text-[#211207] shadow-[inset_0_0_45px_rgba(70,35,10,0.25)]">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#7b3b1e]">{labels[item.kind]}</p>
+            <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[#7b3b1e]">
+              {item.media === "youtube" ? <Youtube className="h-3.5 w-3.5" aria-hidden="true" /> : null}
+              {labels[item.kind]}
+            </p>
             <h2 className="mt-2 font-serif-display text-5xl leading-none text-[#281405]">{item.label}</h2>
             <p className="mt-4 text-base leading-relaxed text-[#3a2110]">{item.description}</p>
 
@@ -51,7 +65,12 @@ export function ItemModal({ item, onClose }: { item: DeskItem; onClose: () => vo
             ) : null}
 
             <div className="mt-6 flex flex-wrap gap-3">
-              {item.url ? <a href={item.url} target={external ? "_blank" : undefined} className="rounded-md bg-[#1f1309] px-4 py-2 text-sm font-semibold text-[#f3e3bf] shadow">{item.actionLabel ?? "Ouvrir le dossier"}</a> : null}
+              {item.url ? (
+                <a href={item.url} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="inline-flex items-center gap-2 rounded-md bg-[#1f1309] px-4 py-2 text-sm font-semibold text-[#f3e3bf] shadow">
+                  {item.media === "youtube" ? <Youtube className="h-4 w-4 text-red-400" aria-hidden="true" /> : null}
+                  {item.actionLabel ?? "Ouvrir le dossier"}
+                </a>
+              ) : null}
               <button type="button" onClick={onClose} className="rounded-md border border-[#6a4a25] px-4 py-2 text-sm text-[#281405]">
                 Refermer la fiche
               </button>
