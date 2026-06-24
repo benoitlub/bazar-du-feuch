@@ -26,6 +26,7 @@ import blankBnnTicket from "@/assets/laboratoire/tickets/ticket-bnn24-vierge-01.
 
 export type DeskDecor = {
   id: string;
+  label: string;
   image: string;
   x: number;
   y: number;
@@ -37,30 +38,30 @@ export type DeskDecor = {
 };
 
 export const deskDecor: DeskDecor[] = [
-  { id: "paper-under-books", image: oldPaper, x: 60, y: 60, width: 630, rotation: -2, opacity: 0.34, zIndex: 0 },
-  { id: "notebook-under-apps", image: gridNotebook, x: 430, y: 356, width: 500, rotation: 2, opacity: 0.24, zIndex: 0 },
-  { id: "photo-folder", image: photoFolder, x: 1190, y: 42, width: 350, rotation: 3, opacity: 0.28, zIndex: 0 },
-  { id: "paper-strip", image: paperStrip, x: 908, y: 324, width: 190, rotation: -8, opacity: 0.75, zIndex: 2, motion: "paper" },
-  { id: "post-it", image: postIt, x: 1120, y: 830, width: 94, rotation: 7, opacity: 0.9, zIndex: 2, motion: "paper" },
-  { id: "small-label", image: smallLabel, x: 710, y: 740, width: 104, rotation: -11, opacity: 0.82, zIndex: 2 },
-  { id: "crumpled-paper", image: crumpledPaper, x: 1645, y: 1120, width: 112, rotation: 8, opacity: 0.75, zIndex: 2, motion: "paper" },
-  { id: "note-one", image: noteOne, x: 235, y: 350, width: 128, rotation: 8, opacity: 0.8, zIndex: 3, motion: "paper" },
-  { id: "note-two", image: noteTwo, x: 890, y: 650, width: 126, rotation: -7, opacity: 0.76, zIndex: 3 },
-  { id: "note-three", image: noteThree, x: 1470, y: 240, width: 138, rotation: 9, opacity: 0.72, zIndex: 3, motion: "paper" },
-  { id: "blank-bnn-ticket", image: blankBnnTicket, x: 1538, y: 885, width: 188, rotation: -9, opacity: 0.86, zIndex: 3 },
-  { id: "coffee-left", image: coffeeThree, x: 30, y: 430, width: 180, rotation: 0, opacity: 0.42, zIndex: 0 },
-  { id: "coffee-center", image: coffeeFive, x: 840, y: 682, width: 154, rotation: 20, opacity: 0.38, zIndex: 0 },
-  { id: "coffee-right", image: coffeeTen, x: 1660, y: 350, width: 150, rotation: 0, opacity: 0.35, zIndex: 0 },
-  { id: "wood-stamp", image: woodStamp, x: 905, y: 1085, width: 92, rotation: -16, opacity: 0.95, zIndex: 3 },
-  { id: "archive-stamp", image: archiveStamp, x: 1185, y: 1160, width: 92, rotation: 13, opacity: 0.72, zIndex: 3 },
-  { id: "archive-string", image: archiveString, x: 1665, y: 570, width: 118, rotation: 18, opacity: 0.82, zIndex: 3 },
-  { id: "archive-clip", image: archiveClip, x: 1240, y: 92, width: 74, rotation: -12, zIndex: 6 },
-  { id: "clip-one", image: paperClip, x: 790, y: 340, width: 55, rotation: 18, zIndex: 4 },
-  { id: "clip-two", image: paperClip, x: 1015, y: 835, width: 47, rotation: -22, zIndex: 4 },
-  { id: "black-clips", image: blackClips, x: 1450, y: 930, width: 95, rotation: 12, zIndex: 4 },
-  { id: "pin-red", image: pinRed, x: 1130, y: 350, width: 31, rotation: 0, zIndex: 8 },
-  { id: "pin-green", image: pinGreen, x: 1250, y: 305, width: 28, rotation: 14, zIndex: 8 },
-  { id: "pin-blue", image: pinBlue, x: 1080, y: 505, width: 28, rotation: -8, zIndex: 8 },
-  { id: "pin-amber", image: pinAmber, x: 356, y: 420, width: 27, rotation: 11, zIndex: 8, motion: "glint" },
-  { id: "pin-white", image: pinWhite, x: 1602, y: 340, width: 27, rotation: -7, zIndex: 8, motion: "glint" },
+  { id: "paper-under-books", label: "Feuillet sous les livres", image: oldPaper, x: 42, y: 52, width: 690, rotation: -2, opacity: 0.42, zIndex: 1 },
+  { id: "notebook-under-apps", label: "Carnet à plume", image: gridNotebook, x: 414, y: 338, width: 540, rotation: 2, opacity: 0.36, zIndex: 17 },
+  { id: "photo-folder", label: "Dossier photographique", image: photoFolder, x: 1180, y: 28, width: 410, rotation: 3, opacity: 0.46, zIndex: 27 },
+  { id: "paper-strip", label: "Bandelette annotée", image: paperStrip, x: 900, y: 334, width: 220, rotation: -8, opacity: 0.9, zIndex: 17, motion: "paper" },
+  { id: "post-it", label: "Post-it griffonné", image: postIt, x: 1072, y: 744, width: 132, rotation: 7, opacity: 1, zIndex: 30, motion: "paper" },
+  { id: "small-label", label: "Étiquette d'expérience", image: smallLabel, x: 704, y: 746, width: 142, rotation: -11, opacity: 0.94, zIndex: 21 },
+  { id: "crumpled-paper", label: "Papier froissé", image: crumpledPaper, x: 1650, y: 1008, width: 152, rotation: 8, opacity: 0.92, zIndex: 30, motion: "paper" },
+  { id: "note-one", label: "Note d'observation", image: noteOne, x: 222, y: 344, width: 166, rotation: 8, opacity: 0.94, zIndex: 17, motion: "paper" },
+  { id: "note-two", label: "Note Creature-Sync", image: noteTwo, x: 672, y: 672, width: 172, rotation: -7, opacity: 0.94, zIndex: 22 },
+  { id: "note-three", label: "Note de terrain Rotas", image: noteThree, x: 1510, y: 250, width: 176, rotation: 9, opacity: 0.9, zIndex: 31, motion: "paper" },
+  { id: "blank-bnn-ticket", label: "Ticket presse BNN24", image: blankBnnTicket, x: 1480, y: 888, width: 224, rotation: -9, opacity: 1, zIndex: 33 },
+  { id: "coffee-left", label: "Auréole de café", image: coffeeThree, x: 16, y: 448, width: 215, rotation: 0, opacity: 0.56, zIndex: 1 },
+  { id: "coffee-center", label: "Trace de verre Frunch", image: coffeeFive, x: 730, y: 1006, width: 190, rotation: 20, opacity: 0.52, zIndex: 37 },
+  { id: "coffee-right", label: "Trace de café Feuch", image: coffeeTen, x: 1652, y: 352, width: 188, rotation: 0, opacity: 0.5, zIndex: 27 },
+  { id: "wood-stamp", label: "Tampon en bois", image: woodStamp, x: 914, y: 1080, width: 118, rotation: -16, opacity: 1, zIndex: 44 },
+  { id: "archive-stamp", label: "Tampon administratif", image: archiveStamp, x: 1172, y: 1150, width: 116, rotation: 13, opacity: 0.9, zIndex: 44 },
+  { id: "archive-string", label: "Ficelle d'archive", image: archiveString, x: 1574, y: 126, width: 170, rotation: 18, opacity: 1, zIndex: 27 },
+  { id: "archive-clip", label: "Pince du dossier Feuch", image: archiveClip, x: 1220, y: 72, width: 92, rotation: -12, zIndex: 44 },
+  { id: "clip-one", label: "Trombone des applications", image: paperClip, x: 790, y: 344, width: 72, rotation: 18, zIndex: 44 },
+  { id: "clip-two", label: "Trombone des archives", image: paperClip, x: 1014, y: 840, width: 64, rotation: -22, zIndex: 44 },
+  { id: "black-clips", label: "Trombones noirs BNN24", image: blackClips, x: 1432, y: 920, width: 122, rotation: 12, zIndex: 44 },
+  { id: "pin-red", label: "Punaise rouge Rotas", image: pinRed, x: 1132, y: 350, width: 42, rotation: 0, zIndex: 44 },
+  { id: "pin-green", label: "Punaise verte Rotas", image: pinGreen, x: 1250, y: 306, width: 40, rotation: 14, zIndex: 44 },
+  { id: "pin-blue", label: "Punaise bleue Rotas", image: pinBlue, x: 1080, y: 506, width: 40, rotation: -8, zIndex: 44 },
+  { id: "pin-amber", label: "Punaise du carnet", image: pinAmber, x: 356, y: 420, width: 39, rotation: 11, zIndex: 44, motion: "glint" },
+  { id: "pin-white", label: "Punaise des archives", image: pinWhite, x: 1602, y: 340, width: 39, rotation: -7, zIndex: 44, motion: "glint" },
 ];

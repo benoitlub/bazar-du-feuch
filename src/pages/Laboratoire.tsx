@@ -117,6 +117,7 @@ function FeuletteVisitor() {
 }
 
 export default function Laboratoire() {
+  const debugDecor = new URLSearchParams(window.location.search).get("debugDecor") === "1";
   const viewportRef = useRef<HTMLElement | null>(null);
   const [view, setView] = useState<View>({ x: 0, y: 0, zoom: 0.5 });
   const viewRef = useRef(view);
@@ -418,14 +419,13 @@ export default function Laboratoire() {
           <div className="lab-dust" aria-hidden="true" />
 
           {deskDecor.map((decor) => (
-            <img
+            <div
               key={decor.id}
-              src={decor.image}
-              alt=""
-              draggable={false}
-              className={`lab-decor pointer-events-none absolute select-none ${
+              className={`lab-decor absolute select-none ${
                 decor.motion ? `lab-decor--${decor.motion}` : ""
-              }`}
+              } ${debugDecor ? "lab-decor--debug" : "pointer-events-none"}`}
+              data-decor-name={decor.label}
+              title={debugDecor ? decor.label : undefined}
               style={{
                 left: decor.x,
                 top: decor.y,
@@ -434,7 +434,9 @@ export default function Laboratoire() {
                 opacity: decor.opacity ?? 1,
                 transform: `rotate(${decor.rotation}deg)`,
               }}
-            />
+            >
+              <img src={decor.image} alt="" draggable={false} className="block h-auto w-full" />
+            </div>
           ))}
 
           <FeuletteVisitor />
