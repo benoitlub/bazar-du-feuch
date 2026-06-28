@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { EdgePanControls } from "@/components/laboratoire/EdgePanControls";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Laboratoire from "./pages/Laboratoire.tsx";
@@ -19,7 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/a-propos" element={<About />} />
-          <Route path="/laboratoire" element={<Laboratoire />} />
+          <Route path="/laboratoire" element={<><Laboratoire /><EdgePanControls /></>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
