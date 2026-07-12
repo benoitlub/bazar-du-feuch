@@ -4,6 +4,7 @@ import gerard from "@/assets/laboratoire/gerard-cover.webp";
 import kifMolla from "@/assets/laboratoire/kif-molla-cover.webp";
 import neverland2 from "@/assets/laboratoire/neverland-v2-cover.jpg";
 import terra from "@/assets/laboratoire/terra-cover.png";
+import dice420 from "@/assets/laboratoire/games/420-dice-game-card.svg";
 
 export const projectImages = {
   clochette: terra,
@@ -12,4 +13,5 @@ export const projectImages = {
   kifMolla,
   neverland2,
   terra: clochette,
+  dice420,
 } as const;
