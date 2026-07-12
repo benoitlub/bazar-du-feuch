@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">420 Dice Game</title>
+  <desc id="desc">Carte illustrée du jeu de dés 420 Dice Game</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="80%">
+      <stop offset="0" stop-color="#493060"/>
+      <stop offset="0.58" stop-color="#20152d"/>
+      <stop offset="1" stop-color="#09060d"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop stop-color="#f6d38a"/>
+      <stop offset="0.5" stop-color="#c9973e"/>
+      <stop offset="1" stop-color="#8e5d24"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="900" height="600" rx="34" fill="url(#bg)"/>
+  <circle cx="746" cy="104" r="130" fill="#a85fd2" opacity=".12"/>
+  <circle cx="142" cy="520" r="190" fill="#d6a64c" opacity=".08"/>
+  <g opacity=".2" stroke="#efd9a4" stroke-width="2">
+    <path d="M60 82h780M60 518h780"/>
+    <path d="M110 42v516M790 42v516"/>
+  </g>
+  <text x="450" y="112" text-anchor="middle" fill="#ead7aa" font-family="Georgia,serif" font-size="30" letter-spacing="8">FEUCH INSTITUTE</text>
+  <text x="450" y="202" text-anchor="middle" fill="url(#gold)" font-family="Georgia,serif" font-weight="700" font-size="112">420</text>
+  <text x="450" y="268" text-anchor="middle" fill="#f4ead2" font-family="Georgia,serif" font-weight="700" font-size="58" letter-spacing="6">DICE GAME</text>
+  <g transform="translate(255 318) rotate(-9)" filter="url(#shadow)">
+    <rect width="155" height="155" rx="24" fill="#f2e8d0" stroke="#6f4a28" stroke-width="8"/>
+    <g fill="#25172f">
+      <circle cx="42" cy="42" r="13"/><circle cx="113" cy="42" r="13"/><circle cx="77.5" cy="77.5" r="13"/><circle cx="42" cy="113" r="13"/><circle cx="113" cy="113" r="13"/>
+    </g>
+  </g>
+  <g transform="translate(500 330) rotate(10)" filter="url(#shadow)">
+    <rect width="155" height="155" rx="24" fill="#e8d4a6" stroke="#6f4a28" stroke-width="8"/>
+    <g fill="#6e2e28">
+      <circle cx="42" cy="42" r="13"/><circle cx="113" cy="42" r="13"/><circle cx="42" cy="113" r="13"/><circle cx="113" cy="113" r="13"/>
+    </g>
+  </g>
+  <text x="450" y="548" text-anchor="middle" fill="#cbb98f" font-family="Arial,sans-serif" font-size="24" letter-spacing="3">LANCE · JOUE · AVANCE</text>
+</svg>
