@@ -114,7 +114,6 @@ export const projects: Project[] = [
     emoji: "🦸",
     actionLabel: "Lire sur Amazon",
   },
-
   {
     id: "creature-sync",
     title: "Creature-Sync",
@@ -149,7 +148,6 @@ export const projects: Project[] = [
     emoji: "👁️",
     actionLabel: "Tester l'application",
   },
-
   {
     id: "prohibited-online",
     title: "Pro.Hibited Online",
@@ -160,6 +158,18 @@ export const projects: Project[] = [
     url: "https://benoitlub.github.io/prohibited-online/",
     emoji: "🃏",
     actionLabel: "Tester le prototype",
+  },
+  {
+    id: "420-dice-game",
+    title: "420 Dice Game",
+    category: "games",
+    status: "available",
+    description:
+      "Un jeu de dés mobile et multilingue pour lancer des défis, jouer avec des packs thématiques, débloquer des trophées et transformer chaque tirage en petite expérience Feuch Institute.",
+    url: "https://benoitlub.github.io/420-dice-game-reboot/",
+    emoji: "🎲",
+    image: projectImages.dice420,
+    actionLabel: "Lancer les dés",
   },
   {
     id: "blacklace-dice",
@@ -183,7 +193,6 @@ export const projects: Project[] = [
     emoji: "🖤",
     actionLabel: "Explorer",
   },
-
   {
     id: "support-feuch-institute",
     title: "Soutenir le Feuch Institut",
