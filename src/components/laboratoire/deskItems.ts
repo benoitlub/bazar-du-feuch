@@ -88,6 +88,7 @@ const projectAssets: Record<string, string> = {
   "prohibited-online": prohibitedOnlineCard,
   "blacklace-dice": blacklaceDiceCard,
   "blacklace-echo": blacklaceEchoCard,
+  "vacances-interdites": "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="360" height="540" viewBox="0 0 360 540"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#142333"/><stop offset="1" stop-color="#bd8751"/></linearGradient></defs><rect width="360" height="540" fill="url(#sky)"/><path d="M180 24L330 290H30Z" fill="none" stroke="#dfc393" stroke-width="2" opacity=".6"/><text x="180" y="120" fill="#f5e4bf" text-anchor="middle" font-family="serif" font-size="35">LES VACANCES</text><text x="180" y="160" fill="#f5e4bf" text-anchor="middle" font-family="serif" font-size="36">INTERDITES</text><path d="M0 420Q90 340 180 410T360 375V540H0Z" fill="#13201c"/><text x="180" y="505" fill="#f5e4bf" text-anchor="middle" font-family="serif" font-size="20">BENOÎT LUBERT</text></svg>'),
   "feuch-lab": bazarDuFeuch,
   "blacklace-pass": badgeFeuchInstitute,
   "support-feuch-institute": badgeFeuchInstitute,
@@ -141,6 +142,7 @@ export const deskItems: DeskItem[] = [
   projectItem("feulette-tachetee", "book", 585, 154, 158, 6),
   projectItem("kif-et-molla", "book", 704, 126, 166, 10),
   projectItem("crotte-man", "book", 88, 330, 150, -7),
+  projectItem("vacances-interdites", "book", 170, 320, 155, 5),
 
   {
     id: "note-intro",
