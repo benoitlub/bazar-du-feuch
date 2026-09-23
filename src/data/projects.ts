@@ -115,6 +115,17 @@ export const projects: Project[] = [
     actionLabel: "Lire sur Amazon",
   },
   {
+    id: "vacances-interdites",
+    title: "Les Vacances interdites",
+    category: "books",
+    status: "available",
+    description:
+      "Quatre voyageurs aux cheveux blonds, un lapin et un voyage qui n'aurait jamais dû avoir lieu. Une aventure de science-fiction tendre et décalée, entre ailleurs et fausses reposées.",
+    url: "https://amzn.eu/d/0gbQ38IR",
+    emoji: "📖",
+    actionLabel: "Lire sur Amazon",
+  },
+  {
     id: "creature-sync",
     title: "Creature-Sync",
     category: "apps",
