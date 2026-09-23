@@ -88,6 +88,8 @@ const projectAssets: Record<string, string> = {
   "prohibited-online": prohibitedOnlineCard,
   "blacklace-dice": blacklaceDiceCard,
   "blacklace-echo": blacklaceEchoCard,
+  "feuch-lab": bazarDuFeuch,
+  "blacklace-pass": badgeFeuchInstitute,
   "support-feuch-institute": badgeFeuchInstitute,
   "feuch-institute": bazarDuFeuch,
 };
@@ -158,6 +160,8 @@ export const deskItems: DeskItem[] = [
   projectItem("creature-sync", "app", 535, 430, 248, 3, "tablet"),
   projectItem("clochette-lite", "app", 774, 478, 182, -5, "phone"),
   projectItem("blacklace-echo", "game", 945, 430, 250, 2, "radio"),
+  projectItem("feuch-lab", "app", 1210, 420, 210, -3, "tablet"),
+  projectItem("blacklace-pass", "card", 1460, 455, 160, 5),
 
   projectItem("prohibited-online", "game", 164, 795, 238, -4),
   projectItem("blacklace-dice", "game", 385, 832, 218, 4),
