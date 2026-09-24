@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Info, FlaskConical, Gamepad2, Coffee } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -46,13 +46,13 @@ export const Header = () => {
           ))}
         </nav>
 
-        <button
+        <div className="flex items-center gap-1.5"><a href="https://benoitlub.github.io/feuchlab/" title="Feuch Lab" aria-label="Feuch Lab" className="grid h-9 w-9 place-items-center rounded-xl border border-parchment/25 text-parchment/90"><FlaskConical size={18}/></a><a href="https://feuch-game.benoitlubert.workers.dev/" title="Feuch Game" aria-label="Feuch Game" className="grid h-9 w-9 place-items-center rounded-xl border border-parchment/25 text-parchment/90"><Gamepad2 size={18}/></a><Link to="/a-propos" title="Informations" aria-label="À propos du Bazar" className="grid h-9 w-9 place-items-center rounded-xl border border-parchment/25 text-parchment/90"><Info size={18}/></Link><a href="https://ko-fi.com/feuchinstitut" target="_blank" rel="noopener noreferrer" title="Soutenir sur Ko-fi" aria-label="Soutenir sur Ko-fi" className="grid h-9 w-9 place-items-center rounded-xl border border-parchment/25 text-parchment/90"><Coffee size={18}/></a><button
           className="rounded-md p-2 text-parchment md:hidden"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Ouvrir le menu"
+          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        </button></div>
       </div>
 
       {open && (
